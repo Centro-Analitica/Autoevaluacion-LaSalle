@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="stylo-fac.css"> -->
   <title>Factores</title>
   <style>
+    /* Estilos generales */
     body { 
       font-family: Arial, sans-serif; 
       padding: 20px; 
@@ -12,25 +14,16 @@
       margin: 0;
     }
     
+    h1 {
+      margin: 0 auto;
+      font-size: 3rem;
+      width: 100%;
+      text-align: center;
+    }
+    
     h2 { color: #003366; }
     
-    .button {
-      display: block;
-      padding: 15px;
-      margin: 15px auto;
-      background-color: #003057;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 800px;
-      transition: background-color 0.3s;
-    }
-    
-    .button:hover {
-      background-color: #004080;
-    }
-
+    /* Encabezados */
     header {
       background-color: #003057;
       color: white;
@@ -40,7 +33,7 @@
     .header-content {
       display: flex;
       align-items: center;
-      max-width: 1200px;
+      max-width: 1500px;
       margin: 0 auto;
       position: relative;
     }
@@ -61,14 +54,7 @@
     }
 
     .home-icon {
-      font-size: 24px;
-    }
-
-    h1 {
-      margin: 0 auto;
-      font-size: 2rem;
-      width: 100%;
-      text-align: center;
+      font-size: 30px;
     }
     
     /* Encabezado superior */
@@ -77,12 +63,12 @@
       align-items: center;
       justify-content: space-between;
       background-color: #ffffff;
-      padding: 10px 30px;
+      padding: 20px 30px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .top-header .logo {
-      height: 50px;
+      height: 70px;
     }
 
     #searchForm {
@@ -97,6 +83,7 @@
       padding: 8px 15px;
       border-radius: 20px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
 
     .top-header .icons {
@@ -107,134 +94,7 @@
       cursor: pointer;
     }
     
-    .resaltado {
-      background-color: #F2A900;
-      transition: background-color 0.5s;
-    }
-
-    .footer {
-      background-color: #003057;
-      color: white;
-      padding: 15px 30px;
-      margin-top: 30px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
-    }
-
-    .left, .right {
-      font-size: 14px;
-    }
-    
-    /* Estilos responsivos */
-    @media (max-width: 768px) {
-      .button {
-        width: 90%;
-        padding: 12px;
-        font-size: 16px;
-      }
-      
-      .top-header {
-        padding: 10px 15px;
-      }
-      
-      .top-header .logo {
-        height: 40px;
-      }
-      
-      .top-header .search-box {
-        width: 70%;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      
-      h1 {
-        font-size: 1.5rem;
-      }
-      
-      .button {
-        width: 95%;
-        padding: 10px;
-        font-size: 14px;
-        margin: 10px auto;
-      }
-      
-      .top-header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-      }
-      
-      .top-header .logo {
-        height: 35px;
-        margin-bottom: 5px;
-      }
-      
-      #searchForm {
-        width: 100%;
-        margin: 5px 0;
-      }
-      
-      .top-header .search-box {
-        width: 90%;
-      }
-      
-      .top-header .icons {
-        margin-top: 5px;
-      }
-    }
-    
-    /* Estilos para el contenido desplegable */
-    .factor-contenido {
-      display: none;
-      background-color: #f5f5f5;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px auto;
-      width: 80%;
-      max-width: 800px;
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .factor-contenido h3 {
-      color: #003057;
-      margin-top: 0;
-    }
-    
-    .factor-contenido ul {
-      padding-left: 20px;
-    }
-    
-    .factor-contenido li {
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-    
-    .activo {
-      display: block;
-      animation: fadeIn 0.5s;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    /* Modificación del botón para indicar que es desplegable */
+    /* Botones y elementos interactivos */
     .button {
       display: block;
       padding: 15px;
@@ -243,13 +103,13 @@
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      width: 80%;
-      max-width: 800px;
+      width: 90%; /* Aumentado de 80% a 90% */
+      max-width: 1200px; /* Aumentado de 800px a 1200px */
       transition: background-color 0.3s;
       position: relative;
       cursor: pointer;
       border: none;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
     }
     
@@ -272,152 +132,20 @@
       transform: rotate(180deg);
     }
     
-    header {
-      background-color: #003057;
-      color: white;
-      padding: 20px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    
-    /* Encabezado superior */
-    .top-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #ffffff;
-      padding: 10px 30px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .top-header .logo {
-      height: 50px;
-    }
-
-    #searchForm {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      margin: 0 20px;
-    }
-
-    .top-header .search-box {
-      width: 60%;
-      padding: 8px 15px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-    }
-
-    .top-header .icons {
-      display: flex;
-      gap: 15px;
-      font-size: 20px;
-      color: #003057;
-      cursor: pointer;
-    }
-    
     .resaltado {
       background-color: #F2A900;
       transition: background-color 0.5s;
     }
-
-    .footer {
-      background-color: #003057;
-      color: white;
-      padding: 15px 30px;
-      margin-top: 30px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
-    }
-
-    .left, .right {
-      font-size: 14px;
-    }
     
-    /* Estilos responsivos */
-    @media (max-width: 768px) {
-      .button {
-        width: 90%;
-        padding: 12px;
-        font-size: 16px;
-      }
-      
-      .top-header {
-        padding: 10px 15px;
-      }
-      
-      .top-header .logo {
-        height: 40px;
-      }
-      
-      .top-header .search-box {
-        width: 70%;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      
-      h1 {
-        font-size: 1.5rem;
-      }
-      
-      .button {
-        width: 95%;
-        padding: 10px;
-        font-size: 14px;
-        margin: 10px auto;
-      }
-      
-      .top-header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-      }
-      
-      .top-header .logo {
-        height: 35px;
-        margin-bottom: 5px;
-      }
-      
-      #searchForm {
-        width: 100%;
-        margin: 5px 0;
-      }
-      
-      .top-header .search-box {
-        width: 90%;
-      }
-      
-      .top-header .icons {
-        margin-top: 5px;
-      }
-    }
-    
-    /* Estilos para el contenido desplegable */
+    /* Contenido desplegable de factores */
     .factor-contenido {
       display: none;
       background-color: #f5f5f5;
       border-radius: 8px;
       padding: 20px;
       margin: 10px auto;
-      width: 80%;
-      max-width: 800px;
+      width: 90%; /* Aumentado de 80% a 90% */
+      max-width: 1200px; /* Aumentado de 800px a 1200px */
       text-align: left;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
@@ -446,353 +174,7 @@
       to { opacity: 1; }
     }
     
-    /* Modificación del botón para indicar que es desplegable */
-    .button {
-      display: block;
-      padding: 15px;
-      margin: 15px auto;
-      background-color: #003057;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 800px;
-      transition: background-color 0.3s;
-    }
-    
-    .button:hover {
-      background-color: #004080;
-    }
-
-    header {
-      background-color: #003057;
-      color: white;
-      padding: 20px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    
-    /* Encabezado superior */
-    .top-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #ffffff;
-      padding: 10px 30px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .top-header .logo {
-      height: 50px;
-    }
-
-    #searchForm {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      margin: 0 20px;
-    }
-
-    .top-header .search-box {
-      width: 60%;
-      padding: 8px 15px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-    }
-
-    .top-header .icons {
-      display: flex;
-      gap: 15px;
-      font-size: 20px;
-      color: #003057;
-      cursor: pointer;
-    }
-    
-    .resaltado {
-      background-color: #F2A900;
-      transition: background-color 0.5s;
-    }
-
-    .footer {
-      background-color: #003057;
-      color: white;
-      padding: 15px 30px;
-      margin-top: 30px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
-    }
-
-    .left, .right {
-      font-size: 14px;
-    }
-    
-    /* Estilos responsivos */
-    @media (max-width: 768px) {
-      .button {
-        width: 90%;
-        padding: 12px;
-        font-size: 16px;
-      }
-      
-      .top-header {
-        padding: 10px 15px;
-      }
-      
-      .top-header .logo {
-        height: 40px;
-      }
-      
-      .top-header .search-box {
-        width: 70%;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      
-      h1 {
-        font-size: 1.5rem;
-      }
-      
-      .button {
-        width: 95%;
-        padding: 10px;
-        font-size: 14px;
-        margin: 10px auto;
-      }
-      
-      .top-header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-      }
-      
-      .top-header .logo {
-        height: 35px;
-        margin-bottom: 5px;
-      }
-      
-      #searchForm {
-        width: 100%;
-        margin: 5px 0;
-      }
-      
-      .top-header .search-box {
-        width: 90%;
-      }
-      
-      .top-header .icons {
-        margin-top: 5px;
-      }
-    }
-    
-    /* Estilos para el contenido desplegable */
-    .factor-contenido {
-      display: none;
-      background-color: #f5f5f5;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px auto;
-      width: 80%;
-      max-width: 800px;
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .factor-contenido h3 {
-      color: #003057;
-      margin-top: 0;
-    }
-    
-    .factor-contenido ul {
-      padding-left: 20px;
-    }
-    
-    .factor-contenido li {
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-    
-    .activo {
-      display: block;
-      animation: fadeIn 0.5s;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    /* Modificación del botón para indicar que es desplegable */
-    .button {
-      display: block;
-      padding: 15px;
-      margin: 15px auto;
-      background-color: #003057;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 800px;
-      transition: background-color 0.3s;
-    }
-    
-    .button:hover {
-      background-color: #004080;
-    }
-
-    header {
-      background-color: #003057;
-      color: white;
-      padding: 20px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    
-    /* Encabezado superior */
-    .top-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #ffffff;
-      padding: 10px 30px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .top-header .logo {
-      height: 50px;
-    }
-
-    #searchForm {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      margin: 0 20px;
-    }
-
-    .top-header .search-box {
-      width: 60%;
-      padding: 8px 15px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-    }
-
-    .top-header .icons {
-      display: flex;
-      gap: 15px;
-      font-size: 20px;
-      color: #003057;
-      cursor: pointer;
-    }
-    
-    .resaltado {
-      background-color: #F2A900;
-      transition: background-color 0.5s;
-    }
-
-    .footer {
-      background-color: #003057;
-      color: white;
-      padding: 15px 30px;
-      margin-top: 30px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
-    }
-
-    .left, .right {
-      font-size: 14px;
-    }
-    
-    /* Estilos responsivos */
-    @media (max-width: 768px) {
-      .button {
-        width: 90%;
-        padding: 12px;
-        font-size: 16px;
-      }
-      
-      .top-header {
-        padding: 10px 15px;
-      }
-      
-      .top-header .logo {
-        height: 40px;
-      }
-      
-      .top-header .search-box {
-        width: 70%;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      
-      h1 {
-        font-size: 1.5rem;
-      }
-      
-      .button {
-        width: 95%;
-        padding: 10px;
-        font-size: 14px;
-        margin: 10px auto;
-      }
-      
-      .top-header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-      }
-      
-      .top-header .logo {
-        height: 35px;
-        margin-bottom: 5px;
-      }
-      
-      #searchForm {
-        width: 100%;
-        margin: 5px 0;
-      }
-      
-      .top-header .search-box {
-        width: 90%;
-      }
-      
-      .top-header .icons {
-        margin-top: 5px;
-      }
-    }
-    /* Estilos para las características desplegables */
+    /* Características desplegables */
     .caracteristica-item {
       margin-bottom: 15px;
       border-left: 3px solid #003057;
@@ -800,6 +182,7 @@
       cursor: pointer;
       transition: background-color 0.3s;
       position: relative;
+      padding-right: 30px; /* Añadido para dar más espacio al texto */
     }
     
     .caracteristica-item:hover {
@@ -825,6 +208,7 @@
       padding: 15px;
       margin: 10px 0 10px 20px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      width: 95%; /* Añadido para controlar el ancho */
     }
     
     .caracteristica-contenido.activo {
@@ -839,6 +223,7 @@
       border-radius: 5px;
     }
     
+    /* Enlaces de cuestionario */
     .cuestionario-link {
       display: inline-block;
       margin-top: 15px;
@@ -854,8 +239,111 @@
     .cuestionario-link:hover {
       background-color: #004080;
     }
+    
+    /* Footer */
+    .footer {
+      background-color: #003057;
+      color: white;
+      padding: 15px 30px;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+    }
+
+    .left, .right {
+      font-size: 20px;
+    }
+    
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+        max-width: 800px; /* Reducido para tablets */
+      }
+      
+      .factor-contenido {
+        width: 90%;
+        max-width: 800px; /* Reducido para tablets */
+      }
+      
+      .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .left, .right {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .button {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 10px auto;
+        max-width: none; /* Sin límite máximo en móviles */
+      }
+      
+      .factor-contenido {
+        width: 95%;
+        max-width: none; /* Sin límite máximo en móviles */
+      }
+      
+      .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
+    }
   </style>
 </head>
+<link rel="icon" type="image/jpg" href="imagenes/Logo-Universidad-de-La-Salle.jpg">
 <body>
   <header>
     <div class="header-content">
@@ -872,13 +360,12 @@
     <form id="searchForm" onsubmit="buscarContenido(event)">
       <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
     </form>
-    <div class="icons">
-      <img src="imagenes/Auto la salle (2.0).png" alt="Usuario" title="Usuario" style="height: 40px; width: auto;">
+    <div class="top-header">
+      <img src="imagenes/Auto_la_salle__2.0_-removebg-preview.png" alt="Autoevaluación" class="logo">
     </div>
   </div>
 
   <div id="listaFactores"></div>
-
 
   <script>
     const factores = [
@@ -929,19 +416,34 @@
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR3",
         caracteristicas: [
           {
-            nombre: "Característica 7. Administración y gestión.",
-            descripcion: "Evalúa los procesos administrativos y de gestión de la institución.",
-            imagen: "imagenes/caracteristica7.jpg"
+            nombre: "Característica 7. Administración y gestión",
+            descripcion: "La Universidad de La Salle sustenta su sistema de administración y gestión en un marco normativo claro, coherente y articulado con su Misión Educativa Universitaria Lasallista y los lineamientos establecidos en el Plan Institucional de Desarrollo (PID). Esta normatividad guía la planeación, ejecución, evaluación y mejora de los procesos institucionales con el fin de asegurar la calidad y pertinencia de las acciones en los ámbitos académico, administrativo y organizacional.",
+            imagen: "imagenes/factor 3 caract 7.png"
           },
           {
-            nombre: "Característica 8. Procesos de comunicación.",
-            descripcion: "Analiza los mecanismos de comunicación interna y externa de la institución.",
-            imagen: "imagenes/caracteristica8.jpg"
+            nombre: "Característica 8. Procesos de comunicación",
+            descripcion: "La Universidad de La Salle ha estructurado sus procesos de comunicación institucional en coherencia con los lineamientos del Plan de Desarrollo Institucional (PID), primero en el periodo 2015-2020 y posteriormente en el vigente 2021-2026. Como resultado del Proyecto 411 del PID anterior, en 2017 se consolidó la Dirección de Comunicación y Mercadeo (DCM), entidad responsable de la formulación y ejecución de la política institucional de comunicación. En el PID vigente 2021 – 2026, se tiene el proyecto 5.1 Fortalecimiento del plan de comunicación de la Universidad y en esta ventana se ha configurado una arquitectura comunicacional institucional fundamentada en tres pilares: la Política de Comunicación (aprobada en el año 2024), un organigrama especializado y un sistema general de comunicaciones. Esta estructura ha permitido la transición de un modelo fragmentado a uno sistémico, transversal, digital e inclusivo, en concordancia con la misión Lasallista.",
+            //imagen: "imagenes/caracteristica8.jpg"
           },
           {
-            nombre: "Característica 9. Capacidad de gestión financiera.",
-            descripcion: "Evalúa la gestión financiera y la sostenibilidad económica de la institución.",
-            imagen: "imagenes/caracteristica9.jpg"
+            nombre: "Característica 9. Capacidad de gestión",
+            descripcion: "La Universidad de La Salle ha realizado importantes transformaciones normativas para fortalecer su capacidad de gestión. En 2021, implementó una reforma estatutaria que reorganizó la estructura orgánica institucional y reglamentó la conformación y funcionamiento de las unidades académicas. Esta actualización definió claramente los cargos, funciones y competencias de los niveles directivos, incluyendo rector, vicerrectores, decanos y directores de programa, así como los órganos responsables de aprobar y gestionar los procesos académicos y administrativos",
+            //imagen: "imagenes/caracteristica9.jpg"
+          },
+          {
+            nombre: "Característica 10. Recursos de apoyo académico",
+            descripcion: "La Universidad de La Salle ha estructurado una normativa institucional robusta que orienta sus recursos de apoyo académico hacia el fortalecimiento de la formación integral, la equidad en el acceso al conocimiento y el bienestar de su comunidad educativa. Esta normativa se encuentra articulada con el Plan Institucional de Desarrollo (PID) 2021-2026, específicamente en el Proyecto 6.4: Recursos para el apoyo al aprendizaje y la investigación, que busca garantizar condiciones idóneas para la docencia, el aprendizaje, la creación de conocimiento y el desarrollo humano.",
+            //imagen: "imagenes/caracteristica9.jpg"
+          },
+          {
+            nombre: "Característica 11. Infraestructura física y tecnológica",
+            descripcion: "La infraestructura física y tecnológica de la Universidad de La Salle es gestionada de forma articulada por la Dirección de Infraestructura y Servicios Administrativos (DISA), la Dirección de Tecnología de Información y Comunicaciones (DTIC) y la Dirección de Planeación Estratégica (DPE). Estas dependencias recopilan y analizan las necesidades de las unidades académicas y administrativas para orientar la priorización y ejecución de proyectos de inversión en infraestructura. En 2022, la Universidad formuló el Plan Estratégico de Infraestructura Física y Tecnológica, resultado de una metodología participativa que incluyó 234 miembros de la comunidad universitaria y 32 talleres. Este plan se convierte en instrumento guía para la toma de decisiones relacionadas con mantenimiento, modernización, adquisición y renovación de recursos físicos y tecnológicos.",
+            //imagen: "imagenes/caracteristica9.jpg"
+          },
+          {
+            nombre: "Característica 12. Recursos y gestión financiera",
+            descripcion: "La gestión financiera de la Universidad de La Salle se encuentra firmemente articulada al Plan Institucional de Desarrollo (PID) 2021-2026, el cual orienta la planificación presupuestal, la asignación de recursos y la sostenibilidad operativa a corto, mediano y largo plazo. La normativa que regula la gestión financiera está sustentada en tres pilares:\n\n• Elaboración y control presupuestal: El presupuesto anual es diseñado por la Coordinación de Presupuesto y Costos, bajo la Dirección Financiera y la Vicerrectoría Administrativa y Financiera. Este se somete a revisión y aprobación del Consejo Superior. El proceso incluye cronogramas detallados, participación amplia de unidades académicas y mecanismos de aprobación previamente definidos.\n\n• Sistema de gestión financiera SAP: La Universidad emplea el sistema ERP SAP S4/HANA, especialmente su módulo de Found Management (FM), para controlar y monitorear presupuestos. Este sistema permite una trazabilidad completa del gasto desde su planificación hasta la ejecución, previniendo sobreejecuciones y permitiendo un control estricto de los rubros presupuestales.\n\n• Acuerdo anual de traslados presupuestales: Formalizado y aprobado por el Consejo de Coordinación, establece reglas para la redistribución de recursos, asegurando la coherencia contable y operativa del gasto institucional.",
+            imagen: "imagenes/factor 3 caract 12.png"
           }
         ]
       },
@@ -1327,6 +829,5 @@
     <span class="right">Dirección de Planeación Estratégica - Centro de Analítica - Autoevaluación y Registro Calificado</span>
   </div>
 </footer>
-
 </body>
 </html>

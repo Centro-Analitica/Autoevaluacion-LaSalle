@@ -1,0 +1,262 @@
+ * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  header {
+    background-color: #003057;
+    color: white;
+    padding: 20px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+    /* Encabezado superior */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 10px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .top-header .logo {
+      height: 50px;
+    }
+
+    #searchForm {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+
+    .top-header .search-box {
+      width: 60%;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-header .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #003057;
+      cursor: pointer;
+    }
+
+    /* Franja azul con título */
+    header {
+      background-color: #003057;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+  @keyframes zoomFade {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}  
+
+    /* Carrusel */
+  .carousel {
+  position: relative;
+  width: 100%;
+  height: 550px; /* tamaño fijo para el carrusel */
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #003057;
+}
+
+.carousel img {
+  position: absolute;   /* Para que las imágenes estén apiladas */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* recorta para llenar el contenedor */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel img.active {
+  opacity: 1;
+  position: relative; /* o absolute si prefieres, pero mantener */
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 48, 87, 0.7);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+ .carousel-btn.prev {
+  left: 15px;
+}
+
+.carousel-btn.next {
+  right: 15px;
+}
+
+    /* Botones */
+    .container {
+    margin: 30px auto;
+    max-width: 900px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 15px;
+    }
+
+  .button {
+    flex: 1 1 200px;
+    max-width: 300px;
+    padding: 15px 25px;
+    font-size: 18px;
+    background-color: #003057;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .button:hover {
+    background-color: #004080;
+  }
+
+  .footer {
+    background-color: #003057;
+    color: white;
+    padding: 15px 30px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+  }
+
+  .left, .right {
+    font-size: 14px;
+  }
+
+ .imagenes-tres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.imagenes-tres img {
+  flex: 1 1 30%;
+  max-width: 300px; /* Limita el tamaño máximo en escritorio */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.resaltado {
+    background-color: #F2A900;
+    transition: background-color 0.5s;
+  }
+
+   /* Responsive para celulares */
+ @media (max-width: 768px) {
+  .carousel {
+    height: 350px;
+  }
+  .imagenes-tres {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imagenes-tres img {
+    max-width: 80%; /* Reduce el tamaño en celular */
+    margin-bottom: 20px;
+  }
+  
+  .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    height: 250px;
+  }
+
+  .carousel-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  
+  .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
+}

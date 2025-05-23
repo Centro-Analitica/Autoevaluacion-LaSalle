@@ -1,0 +1,319 @@
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      text-align: center; 
+      margin: 0;
+    }
+    
+    h1 {
+      margin: 0 auto;
+      font-size: 3rem;
+      width: 100%;
+      text-align: center;
+    }
+    
+    h2 { color: #003366; }
+    
+    /* Encabezados */
+    header {
+      background-color: #003057;
+      color: white;
+      padding: 20px;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      max-width: 1500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .home-link {
+      color: white;
+      text-decoration: none;
+      position: absolute;
+      left: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+
+    .home-link:hover {
+      transform: scale(1.2);
+    }
+
+    .home-icon {
+      font-size: 24px;
+    }
+    
+    /* Encabezado superior */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 30px 60px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .top-header .logo {
+      height: 80px;
+    }
+
+    #searchForm {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+
+    .top-header .search-box {
+      width: 60%;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-header .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #003057;
+      cursor: pointer;
+    }
+    
+    /* Botones y elementos interactivos */
+    .button {
+      display: block;
+      padding: 15px;
+      margin: 15px auto;
+      background-color: #003057;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 800px;
+      transition: background-color 0.3s;
+      position: relative;
+      cursor: pointer;
+      border: none;
+      font-size: 18px;
+      text-align: center;
+    }
+    
+    .button:hover {
+      background-color: #004080;
+    }
+    
+    .button:after {
+      content: "▼";
+      position: absolute;
+      right: 20px;
+      transition: transform 0.3s;
+    }
+    
+    .button.abierto {
+      background-color: #004080;
+    }
+    
+    .button.abierto:after {
+      transform: rotate(180deg);
+    }
+    
+    .resaltado {
+      background-color: #F2A900;
+      transition: background-color 0.5s;
+    }
+    
+    /* Contenido desplegable de factores */
+    .factor-contenido {
+      display: none;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px auto;
+      width: 80%;
+      max-width: 800px;
+      text-align: left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .factor-contenido h3 {
+      color: #003057;
+      margin-top: 0;
+    }
+    
+    .factor-contenido ul {
+      padding-left: 20px;
+    }
+    
+    .factor-contenido li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .activo {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Características desplegables */
+    .caracteristica-item {
+      margin-bottom: 15px;
+      border-left: 3px solid #003057;
+      padding-left: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      position: relative;
+    }
+    
+    .caracteristica-item:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .caracteristica-item:after {
+      content: "▼";
+      position: absolute;
+      right: 10px;
+      font-size: 12px;
+      transition: transform 0.3s;
+    }
+    
+    .caracteristica-item.abierto:after {
+      transform: rotate(180deg);
+    }
+    
+    .caracteristica-contenido {
+      display: none;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 10px 0 10px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .caracteristica-contenido.activo {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    
+    .caracteristica-imagen {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    
+    /* Enlaces de cuestionario */
+    .cuestionario-link {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #003057;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .cuestionario-link:hover {
+      background-color: #004080;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #003057;
+      color: white;
+      padding: 15px 30px;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+    }
+
+    .left, .right {
+      font-size: 20px;
+    }
+    
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+      }
+      
+      .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .left, .right {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .button {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 10px auto;
+      }
+      
+      .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
+    }

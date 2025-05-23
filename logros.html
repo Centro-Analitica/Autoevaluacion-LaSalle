@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Logros</title>
   <style>
+    /* Estilos generales */
     body { 
       font-family: Arial, sans-serif; 
       padding: 20px; 
@@ -12,7 +13,14 @@
       margin: 0;
     }
     
-    /* Franja azul con título */
+    h1 {
+      margin: 0 auto;
+      font-size: 3rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Encabezados */
     header {
       background-color: #003057;
       color: white;
@@ -43,28 +51,21 @@
     }
 
     .home-icon {
-      font-size: 24px;
+      font-size: 30px;
     }
 
-    h1 {
-      margin: 0 auto;
-      font-size: 2rem;
-      width: 100%;
-      text-align: center;
-    }
-
-     /* Encabezado superior */
+    /* Encabezado superior */
     .top-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background-color: #ffffff;
-      padding: 10px 30px;
+      padding: 20px 30px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .top-header .logo {
-      height: 50px;
+      height: 70px;
     }
 
     #searchForm {
@@ -79,22 +80,24 @@
       padding: 8px 15px;
       border-radius: 20px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
 
     .top-header .icons {
       display: flex;
       gap: 15px;
-      font-size: 20px;
+      font-size: 22px;
       color: #003057;
       cursor: pointer;
     }
     
+    /* Resaltado para búsqueda */
     .resaltado {
       background-color: #F2A900;
       transition: background-color 0.5s;
     }
 
-    /* Botones */ 
+    /* Botones y contenido desplegable */ 
     .button {
       display: block;
       padding: 15px;
@@ -109,7 +112,7 @@
       position: relative;
       cursor: pointer;
       border: none;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
     }
     
@@ -132,7 +135,6 @@
       transform: rotate(180deg);
     }
 
-    /* Estilos para el contenido desplegable */
     .logro-contenido {
       display: none;
       background-color: #f5f5f5;
@@ -169,6 +171,7 @@
       to { opacity: 1; }
     }
 
+    /* Pie de página */
     .footer {
       background-color: #003057;
       color: white;
@@ -180,11 +183,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+      flex-wrap: wrap;
     }
 
     .left, .right {
-      font-size: 14px;
+      font-size: 16px;
     }
     
     /* Estilos responsivos */
@@ -193,10 +196,6 @@
         width: 90%;
         padding: 12px;
         font-size: 16px;
-      }
-      
-      .top-header {
-        padding: 10px 15px;
       }
       
       .top-header .logo {
@@ -255,8 +254,9 @@
     }
   </style>
 </head>
+<link rel="icon" type="image/jpg" href="imagenes/Logo-Universidad-de-La-Salle.jpg">
 <body>
-   <header>
+  <header>
     <div class="header-content">
       <a href="index.html" class="home-link" title="Volver a inicio">
         <span class="home-icon">🏢</span>
@@ -271,8 +271,8 @@
     <form id="searchForm" onsubmit="buscarContenido(event)">
       <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
     </form>
-    <div class="icons">
-      <img src="imagenes/Auto la salle (2.0).png" alt="Usuario" title="Usuario" style="height: 40px; width: auto;">
+    <div class="top-header">
+      <img src="imagenes/Auto_la_salle__2.0_-removebg-preview.png" alt="Autoevaluación" class="logo">
     </div>
   </div>
 

@@ -1,4 +1,4 @@
-    body { 
+body { 
       font-family: Arial, sans-serif; 
       padding: 20px; 
       text-align: center; 
@@ -316,4 +316,8 @@
       .top-header .icons {
         margin-top: 5px;
       }
+    }
+    
+    .descripcion {
+        white-space: pre-wrap;
     }

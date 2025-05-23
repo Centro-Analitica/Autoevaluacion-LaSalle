@@ -256,7 +256,7 @@
     }
 
     .left, .right {
-      font-size: 20px;
+      font-size: 18px;
     }
     
     /* Estilos responsivos */
@@ -341,6 +341,12 @@
         margin-top: 5px;
       }
     }
+    /* Agregar en la sección de estilos */
+.caracteristica-descripcion {
+    white-space: pre-wrap;
+    text-align: left;
+    padding: 15px;
+}
   </style>
 </head>
 <link rel="icon" type="image/jpg" href="imagenes/Logo-Universidad-de-La-Salle.jpg">
@@ -608,6 +614,7 @@
       }
     ];
 
+    
     const contenedor = document.getElementById('listaFactores');
     
     // Crear los botones de factores con su contenido desplegable justo después
@@ -655,15 +662,20 @@
           if (caracteristica.descripcion) {
             const descripcion = document.createElement('p');
             descripcion.textContent = caracteristica.descripcion;
+            descripcion.style.whiteSpace = 'pre-line'; // ✅ Respeta los saltos de línea
             caracteristicaContenido.appendChild(descripcion);
           }
-          
           // Agregar imagen (si existe)
           if (caracteristica.imagen) {
             const imagen = document.createElement('img');
             imagen.src = caracteristica.imagen;
             imagen.alt = `Imagen de ${caracteristica.nombre}`;
             imagen.className = 'caracteristica-imagen';
+            // Agregar estas líneas para centrar:
+            imagen.style.display = 'block';
+            imagen.style.margin = '0 auto';
+            imagen.style.maxWidth = '100%';
+            imagen.style.height = 'auto';
             caracteristicaContenido.appendChild(imagen);
           }
           
@@ -708,7 +720,7 @@
         cuestionarioLink.className = 'cuestionario-link';
         cuestionarioLink.innerHTML = `
           <img src="imagenes/cuestionario.png" alt="Cuestionario" style="height: 20px; width: auto; vertical-align: middle; margin-right: 8px;">
-          Responder cuestionario sobre ${factor.nombre}
+          Fortalezas y oportunidades sobre ${factor.nombre}
         `;
         
         cuestionarioContainer.appendChild(cuestionarioLink);
@@ -822,7 +834,6 @@
       }
     }
   </script>
-
   <footer class="footer">
   <div class="footer-content">
     <span class="left">Universidad de La Salle - Autoevaluación Institucional © 2025</span>

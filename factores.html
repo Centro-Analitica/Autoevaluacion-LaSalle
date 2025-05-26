@@ -3,351 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="stylo-fac.css"> -->
+  <link rel="stylesheet" href="stylo-fac.css">
   <title>Factores</title>
-  <style>
-    /* Estilos generales */
-    body { 
-      font-family: Arial, sans-serif; 
-      padding: 20px; 
-      text-align: center; 
-      margin: 0;
-    }
-    
-    h1 {
-      margin: 0 auto;
-      font-size: 3rem;
-      width: 100%;
-      text-align: center;
-    }
-    
-    h2 { color: #003366; }
-    
-    /* Encabezados */
-    header {
-      background-color: #003057;
-      color: white;
-      padding: 20px;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      max-width: 1500px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .home-link {
-      color: white;
-      text-decoration: none;
-      position: absolute;
-      left: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s;
-    }
-
-    .home-link:hover {
-      transform: scale(1.2);
-    }
-
-    .home-icon {
-      font-size: 30px;
-    }
-    
-    /* Encabezado superior */
-    .top-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #ffffff;
-      padding: 20px 30px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .top-header .logo {
-      height: 70px;
-    }
-
-    #searchForm {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      margin: 0 20px;
-    }
-
-    .top-header .search-box {
-      width: 60%;
-      padding: 8px 15px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-
-    .top-header .icons {
-      display: flex;
-      gap: 15px;
-      font-size: 20px;
-      color: #003057;
-      cursor: pointer;
-    }
-    
-    /* Botones y elementos interactivos */
-    .button {
-      display: block;
-      padding: 15px;
-      margin: 15px auto;
-      background-color: #003057;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      width: 90%; /* Aumentado de 80% a 90% */
-      max-width: 1200px; /* Aumentado de 800px a 1200px */
-      transition: background-color 0.3s;
-      position: relative;
-      cursor: pointer;
-      border: none;
-      font-size: 18px;
-      text-align: center;
-    }
-    
-    .button:hover {
-      background-color: #004080;
-    }
-    
-    .button:after {
-      content: "▼";
-      position: absolute;
-      right: 20px;
-      transition: transform 0.3s;
-    }
-    
-    .button.abierto {
-      background-color: #004080;
-    }
-    
-    .button.abierto:after {
-      transform: rotate(180deg);
-    }
-    
-    .resaltado {
-      background-color: #F2A900;
-      transition: background-color 0.5s;
-    }
-    
-    /* Contenido desplegable de factores */
-    .factor-contenido {
-      display: none;
-      background-color: #f5f5f5;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px auto;
-      width: 90%; /* Aumentado de 80% a 90% */
-      max-width: 1200px; /* Aumentado de 800px a 1200px */
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .factor-contenido h3 {
-      color: #003057;
-      margin-top: 0;
-    }
-    
-    .factor-contenido ul {
-      padding-left: 20px;
-    }
-    
-    .factor-contenido li {
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-    
-    .activo {
-      display: block;
-      animation: fadeIn 0.5s;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    /* Características desplegables */
-    .caracteristica-item {
-      margin-bottom: 15px;
-      border-left: 3px solid #003057;
-      padding-left: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      position: relative;
-      padding-right: 30px; /* Añadido para dar más espacio al texto */
-    }
-    
-    .caracteristica-item:hover {
-      background-color: #f0f0f0;
-    }
-    
-    .caracteristica-item:after {
-      content: "▼";
-      position: absolute;
-      right: 10px;
-      font-size: 12px;
-      transition: transform 0.3s;
-    }
-    
-    .caracteristica-item.abierto:after {
-      transform: rotate(180deg);
-    }
-    
-    .caracteristica-contenido {
-      display: none;
-      background-color: #ffffff;
-      border-radius: 5px;
-      padding: 15px;
-      margin: 10px 0 10px 20px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      width: 95%; /* Añadido para controlar el ancho */
-    }
-    
-    .caracteristica-contenido.activo {
-      display: block;
-      animation: fadeIn 0.5s;
-    }
-    
-    .caracteristica-imagen {
-      max-width: 100%;
-      height: auto;
-      margin: 10px 0;
-      border-radius: 5px;
-    }
-    
-    /* Enlaces de cuestionario */
-    .cuestionario-link {
-      display: inline-block;
-      margin-top: 15px;
-      background-color: #003057;
-      color: white;
-      padding: 8px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    
-    .cuestionario-link:hover {
-      background-color: #004080;
-    }
-    
-    /* Footer */
-    .footer {
-      background-color: #003057;
-      color: white;
-      padding: 15px 30px;
-      margin-top: 30px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
-    }
-
-    .left, .right {
-      font-size: 18px;
-    }
-    
-    /* Estilos responsivos */
-    @media (max-width: 768px) {
-      .button {
-        width: 90%;
-        padding: 12px;
-        font-size: 16px;
-        max-width: 800px; /* Reducido para tablets */
-      }
-      
-      .factor-contenido {
-        width: 90%;
-        max-width: 800px; /* Reducido para tablets */
-      }
-      
-      .top-header {
-        padding: 10px 15px;
-      }
-      
-      .top-header .logo {
-        height: 40px;
-      }
-      
-      .top-header .search-box {
-        width: 70%;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      .left, .right {
-        font-size: 16px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      
-      h1 {
-        font-size: 1.5rem;
-      }
-      
-      .button {
-        width: 95%;
-        padding: 10px;
-        font-size: 14px;
-        margin: 10px auto;
-        max-width: none; /* Sin límite máximo en móviles */
-      }
-      
-      .factor-contenido {
-        width: 95%;
-        max-width: none; /* Sin límite máximo en móviles */
-      }
-      
-      .top-header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-      }
-      
-      .top-header .logo {
-        height: 35px;
-        margin-bottom: 5px;
-      }
-      
-      #searchForm {
-        width: 100%;
-        margin: 5px 0;
-      }
-      
-      .top-header .search-box {
-        width: 90%;
-      }
-      
-      .top-header .icons {
-        margin-top: 5px;
-      }
-    }
-    /* Agregar en la sección de estilos */
-.caracteristica-descripcion {
-    white-space: pre-wrap;
-    text-align: left;
-    padding: 15px;
-}
-  </style>
 </head>
 <link rel="icon" type="image/jpg" href="imagenes/Logo-Universidad-de-La-Salle.jpg">
 <body>
@@ -374,85 +31,358 @@
   <div id="listaFactores"></div>
 
   <script>
+    // Agregar esta función antes de la definición de factores
+    function crearTablaHTML(datos) {
+      // Crear elemento tabla
+      const tabla = document.createElement('table');
+      tabla.style.width = '100%';
+      tabla.style.borderCollapse = 'collapse';
+      tabla.style.marginTop = '20px';
+      tabla.style.marginBottom = '20px';
+      tabla.style.boxShadow = '0 2px 3px rgba(0,0,0,0.1)';
+      
+      // Crear encabezado si hay columnas
+      if (datos.columnas && datos.columnas.length > 0) {
+        const thead = document.createElement('thead');
+        const tr = document.createElement('tr');
+        
+        // Estilo para el encabezado
+        tr.style.backgroundColor = '#003057';
+        tr.style.color = 'white';
+        
+        // Agregar cada columna al encabezado
+        datos.columnas.forEach(columna => {
+          const th = document.createElement('th');
+          th.textContent = columna;
+          th.style.padding = '10px';
+          th.style.textAlign = 'left';
+          th.style.fontWeight = 'bold';
+          tr.appendChild(th);
+        });
+        
+        thead.appendChild(tr);
+        tabla.appendChild(thead);
+      }
+      
+      // Crear cuerpo de la tabla
+      const tbody = document.createElement('tbody');
+      
+      // Agregar filas y celdas
+      if (datos.filas && datos.filas.length > 0) {
+        datos.filas.forEach((fila, index) => {
+          const tr = document.createElement('tr');
+          
+          // Alternar colores de fondo para las filas
+          if (index % 2 === 0) {
+            tr.style.backgroundColor = '#f9f9f9';
+          }
+          
+          // Agregar cada celda a la fila
+          fila.forEach(celda => {
+            const td = document.createElement('td');
+            
+            // Verificar si el contenido tiene formato de lista con guiones
+            if (typeof celda === 'string' && celda.includes('- ')) {
+              // Dividir por comas seguidas de guión
+              const items = celda.split(', -');
+              
+              // Si hay múltiples elementos, formatearlos como lista
+              if (items.length > 1) {
+                // Crear un contenedor para la lista
+                const ul = document.createElement('ul');
+                ul.style.margin = '5px 0';
+                ul.style.paddingLeft = '20px';
+                
+                // Procesar el primer elemento (puede tener un guión al principio)
+                let firstItem = items[0];
+                if (firstItem.startsWith('- ')) {
+                  firstItem = firstItem.substring(2);
+                }
+                
+                const li1 = document.createElement('li');
+                li1.textContent = firstItem;
+                ul.appendChild(li1);
+                
+                // Procesar el resto de elementos
+                for (let i = 1; i < items.length; i++) {
+                  const li = document.createElement('li');
+                  li.textContent = items[i].trim();
+                  ul.appendChild(li);
+                }
+                
+                td.appendChild(ul);
+              } else {
+                // Si solo hay un elemento, simplemente mostrar el texto
+                td.textContent = celda;
+              }
+            } else {
+              // Para contenido normal, simplemente mostrar el texto
+              td.textContent = celda;
+            }
+            
+            td.style.padding = '8px';
+            td.style.borderBottom = '1px solid #ddd';
+            tr.appendChild(td);
+          });
+          
+          tbody.appendChild(tr);
+        });
+      }
+      
+      tabla.appendChild(tbody);
+      return tabla;
+    }
+    
     const factores = [
       {
         nombre: "Identidad Institucional",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR1",
         caracteristicas: [
           {
-            nombre: "Característica 1. Coherencia y pertinencia de la misión.",
-            descripcion: "Esta característica evalúa la coherencia entre la misión institucional y las actividades académicas desarrolladas por la institución.",
-            imagen: "imagenes/caracteristica1.jpg"
+            nombre: "Característica 1. Coherencia y pertinencia de la misión",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle sustenta su misión institucional —educación integral, transformación social y liderazgo en servicio— en un conjunto normativo articulado y vigente. Los documentos más directamente vinculados con esta misión son: \n\n•	Estatuto Orgánico: En sus artículos 3, 4 y 5 se consigna la misión, en coherencia con la naturaleza católica, los fines institucionales y las funciones esenciales.\n\n•	Proyecto Educativo Universitario Lasallista (PEUL): Desarrolla la misión desde la identidad lasallista, integrando valores, horizontes de sentido, los procesos articuladores de la praxis universitaria lasallista y las estrategias para su implementación \n\n•	Plan Institucional de Desarrollo (PID) 2021-2026: Traducido en ejes, metas y proyectos, materializa la misión mediante líneas estratégicas con impacto académico, social y territorial.\n\n•	Enfoque Formativo Lasallista: Instrumento pedagógico que expresa la dimensión formativa de la misión, promoviendo el acompañamiento fraterno y el liderazgo transformador." },
+              { tipo: "descripcion", texto: "Estas normativas son revisadas y actualizadas con participación de la comunidad universitaria, asegurando su pertinencia frente a los retos del contexto nacional e internacional." },
+              { tipo: "descripcion", texto: "<strong>Coherencia institucional y pertinencia de la misión con el entorno</strong>" },
+              { tipo: "descripcion", texto: "La misión institucional, sintetizada en el lema “Educar para pensar, decidir y servir”, ha sido fortalecida mediante ejercicios colectivos de revisión, como la formulación del PEUL y del PID. Su despliegue permea los ámbitos académicos, investigativos y de gestión. \n\nLa misión demuestra su relevancia para el entorno social, cultural, ambiental y productivo a través de diversas acciones y logros: \n\n•	Formación integral: el 94% de los egresados se encuentran satisfechos con la influencia de los valores y principios lasallistas en su formación.\n\n•	Generación de conocimiento pertinente: Entre 2018 y 2024, se registraron 19 patentes, muchas enfocadas en soluciones sociales y ambientales, como el desarrollo de probióticos en comunidades rurales (Pasca, Cundinamarca).\n\n•	Compromiso con la equidad: Durante la pandemia, la Universidad otorgó descuentos del 10 % al 30 % en matrículas para garantizar la permanencia estudiantil, sin aumentos en los semestres más críticos.\n\n•	Apuesta por la paz: A través del Proyecto Utopía, se han graduado cerca de 500 profesionales en Ingeniería Agronómica de municipios PDET y categorías 4 a 6.\n\n•	Premio MEN 2020 al “Proyecto Productivo en Zona de Origen” por su enfoque en equidad y desarrollo rural.\n\n•	Ranking THE 2024: 2.ª institución en Colombia en ODS 1 (pobreza), 4.ª en ODS 2 (hambre cero) y 9.ª en ODS 3 (salud y bienestar).\n\n•	Sostenibilidad ambiental: Se preservan más de 500 hectáreas en Yopal y Sasaima, incluyendo corredores ecosistémicos y especies endémicas. En Bogotá, iniciativas institucionales como el Museo de Ciencias Naturales, la Política Ambiental y convenios de conservación fortalecen la educación ambiental urbana." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "La comunidad universitaria manifiesta un alto grado de apropiación y reconocimiento de la misión institucional. Este sentido de pertenencia se ha consolidado gracias a su participación en procesos como la actualización del PEUL y la formulación del PID 2021–2026. \n\n•	El 89% de los estudiantes y el 99% de los docentes, administrativos y directivos afirman que la misión es clara, pertinente y coherente con los principios institucionales." }
+            ]
           },
           {
-            nombre: "Característica 2. Orientaciones y estrategias del proyecto educativo institucional o lo que haga sus veces.",
-            descripcion: "Evalúa cómo el proyecto educativo institucional orienta las funciones sustantivas de la universidad.",
-            imagen: "imagenes/caracteristica2.jpg"
+            nombre: "Característica 2. Orientaciones y estrategias del proyecto educativo institucional o lo que haga sus veces",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle fundamenta sus orientaciones estratégicas y pedagógicas en un sólido cuerpo normativo. Este se actualizó tras la autoevaluación institucional de 2018 y se consolidó en el marco del Plan Institucional de Desarrollo (PID) 2021–2026, mediante los siguientes instrumentos: \n\n•	Estatuto Orgánico (Acuerdo 017 de 2021, ratificado por el MEN en la Resolución 017094 de 2021): redefinió la estructura organizativa y normativa de la Universidad.\n\n•	Proyecto Educativo Universitario Lasallista (PEUL): actualizado por el Acuerdo 023 de 2021, fija las líneas identitarias de la misión educativa.\n\n•	Enfoque Formativo Lasallista (EFL): reformulado por el Acuerdo 027 de 2021, recoge los valores que deben guiar la práctica pedagógica.\n\n•	Sistema de Investigación, Innovación y Emprendimiento Universitario Lasallista (SIEUL) y el Sistema Integrado de Gestión para el Aseguramiento de la Calidad (SIGAC): orientan y evalúan las funciones sustantivas." },
+              { tipo: "descripcion", texto: "<strong>Actualización del PEUL y EFL</strong>" },
+              { tipo: "descripcion", texto: "El PEUL y el EFL fueron reformulados con amplia participación de la comunidad universitaria, integrando valores como el cuidado del otro, la democratización del conocimiento y el desarrollo humano integral. Se destacan:\n\n•	Líneas orientadoras del PEUL: Promueven una educación personalizadora, el acompañamiento fraterno y el respeto por la dignidad de los actores educativos. \n\n•	Didácticas del EFL: Privilegian la interacción educativa, la atención a necesidades estudiantiles y la promoción de ambientes lúdicos y recreativos. " },
+              { tipo: "descripcion", texto: "<strong>Sistema de Investigación, Innovación y Emprendimiento (SIEUL) </strong>" },
+              { tipo: "descripcion", texto: "El SIEUL busca posicionar a la Universidad como un actor relevante en la solución de necesidades nacionales. \n\n•	A través del SIEUL, se han fortalecido redes de conocimiento, investigación aplicada, y patentes con impacto territorial.\n\n•	Infraestructura tecnológica: Optimización de herramientas digitales y plataformas para la democratización del conocimiento." },
+              { tipo: "descripcion", texto: "<strong>Extensión y proyección social </strong>" },
+              { tipo: "descripcion", texto: "La Universidad desarrolla actividades de extensión bajo el lema 'una Universidad en salida', destacando:\n\n•	Entidad Prestadora del Servicio de Extensión Agropecuaria (EPSEA): Trabaja en zonas como el Catatumbo en alianza con ONUDI. \n\n•	Las líneas de acción incluyen educación continuada, asesorías y programas de desarrollo social.\n\n•	Proyecto Utopía: En sus 15 años, ha formado jóvenes campesinos en ingeniería agronómica, impactando territorios vulnerables. " },
+              { tipo: "descripcion", texto: "<strong>Bienestar universitario</strong>" },
+              { tipo: "descripcion", texto: "Liderado por la Vicerrectoría de Promoción y Desarrollo Humano (VPDH), incluye:\n\n•	Acompañamiento interdisciplinar: Psicología, medicina, trabajo social y pastoral. \n\n•	Política de Educación Inclusiva: Atención y prevención de violencias basadas en género." },
+              { tipo: "descripcion", texto: "<strong>Internacionalización</strong>" },
+              { tipo: "descripcion", texto: "La Universidad promueve una 'internacionalización humanizada', destacando:\n\n•	Certificación CeQuint: Otorgada en 2021 por el Consorcio Europeo de Acreditación en Educación Superior. \n\n•	Modelo holístico: Integra componentes académicos internacionales con perspectiva humanista. " },
+              { tipo: "descripcion", texto: "<strong>Gestión administrativa</strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha implementado:\n\n•	Transformación digital: Integración de 80 sistemas en 12 nuevos, fortaleciendo procesos educativos.\n\n•	Infraestructura física: Plan Maestro de Planta Física (PMPF)\n\n•	Mapa de procesos actualizado: Aprobado en 2023, optimiza la articulación entre áreas académicas y administrativas." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "Según los talleres de grupo focal con la comunidad universitaria:\n\n•	La comunidad universitaria valora positivamente la articulación entre el PEUL y las prácticas institucionales\n\n•	El acompañamiento fraterno es percibido como sello distintivo de la experiencia lasallista.\n\n•	Se reconoce el impacto positivo en territorios rurales y la pertinencia de la investigación aplicada.\n\n•	Se debe fortalecer la socialización del PEUL con los estudiantes para facilitar su comprensión y aplicación en la vida académica.\n\n•	Mejorar la infraestructura tecnológica y el mantenimiento de laboratorios, especialmente en programas con alta exigencia técnica.\n\n•	Consolidar los esquemas de acompañamiento para estudiantes de programas nocturnos y virtuales.\n\n•	Ampliar los espacios de interacción y formación que refuercen el sentido de pertenencia a la comunidad lasallista." }
+            ]
           },
           {
-            nombre: "Característica 3. Formación integral y construcción de identidad.",
-            descripcion: "Analiza cómo la institución promueve la formación integral de sus estudiantes y construye una identidad institucional.",
-            imagen: "imagenes/caracteristica3.jpg"
+            nombre: "Característica 3. Formación integral y construcción de identidad",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La formación integral en la Universidad de La Salle está orientada por marcos normativos e institucionales sólidos que se articulan en torno al Proyecto Educativo Universitario Lasallista (PEUL) y al Enfoque Formativo Lasallista (EFL), este último aprobado mediante el Acuerdo No. 027 de 2021. El PEUL, revisado en el mismo año bajo el Acuerdo No. 023, identifica la formación integral como uno de los pilares de la misión institucional, promoviendo dimensiones educativas integradoras, centradas en la vida, transformadoras y animadas por la esperanza cristiana.\n\nLa gestión de esta apuesta formativa está a cargo de tres estructuras principales: la Vicerrectoría de Promoción y Desarrollo Humano (VPDH), el Departamento de Formación Lasallista (DFL) y el Clúster de Desarrollo Humano Integral y Sustentable (DHIS). Estas instancias son responsables de desplegar programas, asignaturas y espacios de participación estudiantil que consolidan una educación ética, incluyente y con impacto social." },
+              { tipo: "descripcion", texto: "<strong>Ejes de formación integral</strong>" },
+              { tipo: "descripcion", texto: "VPDH: bienestar y acompañamiento \n\n Con más de 40 años de trayectoria, la VPDH articula cinco coordinaciones que desarrollan estrategias en deporte, cultura, salud, orientación y pastoral. Estas acciones se enmarcan en el Sistema de Acompañamiento Integral (SAI), cuyo propósito es garantizar la permanencia, el éxito académico y el desarrollo personal de los estudiantes." },
+              {
+                tipo: "tabla",
+                datos: {
+                  titulo: "Participación en formación integral (2020–2024)",
+                  columnas: ["Año", "Total"],
+                  filas: [["2020", "1.782"], ["2021", "2.882"], ["2022", "4.309"], ["2023", "2.625"], ["2024", "5.370"]]
+                }
+              },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">Fuente: Vicerrectoría de Promoción y Desarrollo Humano, 2025</p>" },
+              { tipo: "descripcion", texto: "Las categorías con mayor dinamismo son Pastoral, Representación Estudiantil y Centros de Interés. El salto significativo en representación en 2024 se relaciona con una mejor documentación de elecciones estudiantiles y una mayor articulación institucional." },
+              { tipo: "descripcion", texto: "DFL: formación académica e identitaria \n\n El DFL estructura su propuesta curricular en áreas como Lasallismo, Humanidades, Cultura Religiosa y Ética (pregrado), así como Humanismo y Ciencia (posgrado), que están integradas en todos los planes de estudio. Se busca formar profesionales éticos, espirituales y comprometidos con el bien común." },
+              { tipo: "descripcion", texto: "DHIS: flexibilidad e interdisciplinariedad \n\n Este clúster ofrece electivas de 3 créditos abiertas a toda la comunidad estudiantil, articuladas a los ODS y diseñadas para desarrollar habilidades del ciudadano global." },
+              {
+                tipo: "tabla",
+                datos: {
+                  titulo: "Participación en electivas DHIS (2022–2024)",
+                  columnas: ["Categoría", "Total"],
+                  filas: [["Ciencia, Sostenibilidad y Salud", "5.652"], ["Ciudadanía y Cultura", "1.524"], ["Arte y Expresión Creativa", "1.405"], ["Emprendimiento y Habilidades", "751"], ["Tecnología y Marketing Digital", "642"], ["Total", "9.994"]]
+                }
+              },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">Fuente: Vicerrectoría de Promoción y Desarrollo Humano y Departamento de Formación Lasallista, 2025</p>" },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "Según la Encuesta de Satisfacción Institucional 2025:\n\nEl 100% de directivos y el 96,3% de docentes manifestaron estar satisfechos o muy satisfechos con las oportunidades de formación integral.\n\nLos estudiantes: \n\n•	El 94,3% está satisfecho o muy satisfecho con el enfoque ético y de valores de la formación.\n\n•	El 93,1% valora el compromiso social y con el bien común.\n\n•	El 93% percibe crecimiento intelectual.\n\n•	El 91,1% considera pertinentes los contenidos académicos.\n\n•	El 78,3% siente que la Universidad se preocupa por su bienestar." },
+              { tipo: "descripcion", texto: "En talleres focales, los egresados destacaron: \n\n•	El valor de la espiritualidad lasallista y el enfoque ético en su vida profesional.\n\n•	La interdisciplinariedad y flexibilidad curricular como claves para su desarrollo.\n\n•	El acompañamiento docente y las actividades de voluntariado como factores diferenciadores.\n\n•	La consolidación de una red colaborativa profesional con identidad lasallista.\n\n•	El impacto positivo de iniciativas como el proyecto Utopía, reconocidas nacional e internacionalmente." }
+            ]
           }
         ]
       },
+      //FACTOR 2
       {
         nombre: "Gobierno Institucional y Transparencia",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR2",
         caracteristicas: [
           {
-            nombre: "Característica 4. Buen gobierno y máximo órgano de gobierno.",
-            descripcion: "Evalúa la estructura y funcionamiento de los órganos de gobierno institucional.",
-            imagen: "imagenes/caracteristica4.jpg"
+            nombre: "Característica 4. Buen gobierno y máximo órgano de gobierno",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle cuenta con un marco normativo sólido que regula su funcionamiento y garantiza la coherencia con su misión institucional.  Este marco incluye:\n\n•	Estatuto Orgánico: Ratificado mediante la Resolución Ministerial No. 017094 del 13 de septiembre de 2021, es la máxima norma de gobierno. \n\n•	Código de Ética y Buen Gobierno: Promulgado por el Acuerdo No. 020 del 3 de septiembre de 2021, establece valores y principios éticos para la comunidad universitaria. \n\n•	Proyecto Educativo Universitario Lasallista (PEUL): Actualizado por el Acuerdo No.  023 del 1 de octubre de 2021, orienta las funciones sustantivas de la universidad. \n\n•	Enfoque Formativo Lasallista (EFL): Actualizado por el Acuerdo No.  027 del 22 de octubre de 2021, define los lineamientos formativos. \n\n•	Buenas prácticas en materia de trasparencia, ética institucional, y los mecanismos para la prevención del lavad de activos y financiación del terrorismo: Aprobadas por medio del Acuerdo No. 015 del 2 de agosto de 2024\n\n•	Políticas específicas: Incluyen áreas como calidad, investigación, extensión, bienestar, gestión ambiental, seguridad y salud en el trabajo, entre otras.\n\n•	Comités Institucionales: Regulados por acuerdos y resoluciones que definen su composición y funciones." },
+              { tipo: "descripcion", texto: "<strong>Políticas y Lineamientos </strong>" },
+              { tipo: "descripcion", texto: "A continuación, se relacionan las políticas y lineamientos aprobados por los órganos de gobierno en la ventana de autoevaluación:  \n\n•	Estratégicaz: Plan Institucional de Desarrollo PID 2021–2026, adoptado en 2020 y ajustado en 2022 y 2024. \n\n•	Investigación: Sistema de Investigación, Innovación y Emprendimiento Lasallista 2021–2026, aprobado en 2020. Lineamientos para semilleros de investigación actualizados en 2023. \n\n•	Extensión: Procedimiento para certificar las ofertas internas de educación continuada sin costo, aprobado en 2023\n\n•	Bienestar: Procedimiento para el reconocimientos póstumos y acompañamiento fraternal a la familia, aprobado e1 2021. Política de Educación Inclusiva Institucional (PEII) adoptada en 2024.\n\n<•	Egresados: Política de egresados aprobada en 2022\n\n•	Identidad institucional:	Renovación del escudo institucional en 2021\n\n•	Autoevaluación: Librillo 87: Política institucional de autoevaluación aprobado en 2024. Modelo de autoevaluación institucional aprobado en 2024. \n\nAsimismo, se aprobaron una serie de lineamientos de orden administrativo y operativo, entre esos encontramos: \n\n•	Sistema Integrado de Gestión para Aseguramiento de la Calidad – SIGAC en 2021\n\n•	Política de Seguridad de Información en 2024\n\n•	Política de Tratamiento de Información Personal en 2024\n\n•	Política de Gestión Documental en 2018\n\n•	Política Ambiental en 2018\n\n•	Plan Estratégico de Gestión Ambiental 2025-2026 en 2025\n\n•	Política general en materia de Sistema de Gestión de Seguridad y Salud en el Trabajo - SGSST, Higiene y Seguridad Industrial y de Seguridad Vial " },
+              { tipo: "descripcion", texto: "<strong>Comités Institucionales </strong>" },
+              { tipo: "descripcion", texto: "La Universidad reglamentó la conformación y funcionamiento de instancias técnicas asesoras que contribuyen a la adecuada toma de decisiones institucionales en las siguientes áreas: currículo, investigación, educación virtual, extensión, movilidad, proyección social, bienestar, desarrollo profesional y egresados. \n\nA nivel administrativo y operativo se han consolidado comités en las siguientes áreas: seguridad y salud en el trabajo, convivencia laboral, servicios de salud, administrativa y financiera, gestión ambiental, gestión administrativa de las sedes y gestión de la información. \n\n <strong>Beneficios destacados</strong>\n\n Esta organización institucional ha impactado favorablemente en la estructura y ejecución de las funciones sustantivas, se destaca: \n\n•	Actualización del marco normativo en concordancia con el PID 2021–2026. \n\n•	Fortalecimiento de buenas prácticas en transparencia, ética y gestión académica. \n\n•	Estilo de gobierno interdisciplinario que mejora la toma de decisiones. " },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "\n\n•	La comunidad académica reconoce la eficiencia y ética de los órganos de gobierno, así como avances en acreditación institucional y publicación de información relevante. \n\n•	Se destaca la democracia en procesos de elección y mayor visibilidad de la representación estudiantil en programas de pregrado y posgrado. \n\n•	Fortalecer mecanismos de comunicación interna para que estudiantes y profesores conozcan mejor la estructura y decisiones tomadas en los órganos de gobierno \n\n•	Mejorar la comunicación entre órganos de gobierno y áreas operativas\n\n•	Incrementar la representación de docentes de cátedra en los procesos de toma de decisiones" }
+            ]
           },
           {
-            nombre: "Característica 5. Relación con grupos de interés.",
-            descripcion: "Analiza cómo la institución se relaciona con sus diferentes grupos de interés.",
-            imagen: "imagenes/caracteristica5.jpg"
+            nombre: "Característica 5. Relación con grupos de interés",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle cuenta con la siguiente normatividad institucional que regula sus procesos estratégicos y académicos:\n\n•	El Proyecto Educativo Universitario Lasallista, aprobado mediante el Acuerdo del Consejo Superior No.  023 del 01 de octubre de 2021, es el fundamento de la identidad institucional\n\n•	Plan Institucional de Desarrollo - PID, aprobado por el Acuerdo 041 del Consejo Superior del 5 de noviembre de 2020, establece la planeación estratégica para el periodo 2021-2026.  " },
+              { tipo: "descripcion", texto: "<strong>Actualización del PEUL</strong>" },
+              { tipo: "descripcion", texto: "La actualización del PEUL contó con la participación colectiva de unidades académicas y administrativas, profesores, estudiantes; y fue un proceso que se llevó a cabo en 3 momentos:\n\n•	Momento 1: Aprobación de la metodología tras la lectura y comentarios al documento. \n\n•	Momento 2: Socialización y talleres focales con participación de directivos, profesores, estudiantes y egresados. \n\n•	Momento 3: Análisis, ajustes y aprobación, liderado por 14 directivos.  Este proceso incluyó revisión técnica, validación participativa y aprobación en instancias como el Consejo Superior. " },
+              { tipo: "descripcion", texto: "<strong>Formulación del PID 2021-2026</strong>" },
+              { tipo: "descripcion", texto: "Por su parte, la formulación del PID 2021-2026 se desarrolló en cuatro etapas:\n\n•	Alistamiento y contextualización: Diagnóstico interno y externo con 162 participantes en talleres prospectivos. \n\n•	Diagnóstico interno y externo: Elaboración de matrices DOFA, MEFE y MEFI con 78 participantes en modalidad virtual. \n\n•	Formulación de la estrategia institucional: Definición de visión, programas, metas e indicadores con apoyo de consultores externos. \n\n•	Evaluación, seguimiento y comunicación: Diseño de 32 proyectos, seguimiento semestral y divulgación de resultados. " },
+              { tipo: "descripcion", texto: "<strong>Articulación con grupos de interés</strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha implementado estrategias de articulación con estudiantes, profesores, egresados, aliados estratégicos y directivos.  Estas incluyen encuestas, talleres focales, reuniones con pares evaluadores y proyectos de investigación. Algunos ejemplos de ello son los siguientes instrumentos:\n\n•	Encuesta Multidimensional a Egresados: aplicada en 2020-2021 y en una nueva versión en 2024-2025.\n\n•	Convenios de cooperación con el sector público y privado para proyectos de impacto social.\n\n•	Aplicación anual de la Encuesta de Satisfacción Institucional \n\nComo resultado de esta integración entre la comunidad académica se observa un avance en los siguientes aspectos:\n\n•	Generación de conocimiento que aporta a la transformación social y productiva del país\n\n•	Implementación de metodologías innovadoras en los procesos académico – administrativos\n\n•	Promoción de la producción científica \n\n•	Oferta de educación continua y el desarrollo de proyectos de extensión y asesoría" }
+            ]
           },
           {
-            nombre: "Característica 6. Rendición de cuentas.",
-            descripcion: "Evalúa los mecanismos de rendición de cuentas implementados por la institución.",
-            imagen: "imagenes/caracteristica6.jpg"
+            nombre: "Característica 6. Rendición de cuentas",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional </strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle ha institucionalizado mecanismos de rendición de cuentas tales como:\n\n•	Acuerdo del Consejo Superior 020 del 03 de septiembre de 2021, que promulgó el Código de Ética y Buen Gobierno.  En su artículo 19, capítulo VI, se establecen mecanismos de evaluación y rendición de cuentas, incluyendo informes de gestión, auditorías externas, autoevaluaciones institucionales y comunicación permanente a través de la página web y redes sociales.  \n\n•	Acuerdo 015 del 02 de agosto de 2024 refuerza las buenas prácticas en transparencia y ética institucional. " },
+              { tipo: "descripcion", texto: "<strong>Mecanismos de rendición de cuentas: </strong>" },
+              { tipo: "descripcion", texto: "<u>Auditorías</u>\n\n•	Entre 2018 y 2024, se realizaron auditorías internas de gestión con un enfoque integral, destacando una disminución en su cantidad desde 41 en 2018 a 24 en 2024, debido a cambios en la estructura organizacional.  \n\n•	Se llevaron a cabo auditorías externas de calidad bajo la norma ISO 9001:2015, manteniendo la certificación de ICONTEC desde 2009. \n\n•	Entre 2018 y 2024, se han llevado a cabo anualmente un ciclo de autorías internas de calidad con el objetivo principal de evaluar la eficacia del sistema de gestión conforme los requisitos de la norma ISO 9001:2015 \n\n<u>Divulgación de la gestión a través de canales instruccionales y redes sociales</u> \n\n•	Se ha promovido la creación de piezas audiovisuales, en las cuales las unidades académico – administrativas dan cuenta de su gestión anual. Este contenido se socializa a través del canal oficial de YouTube y las redes sociales de la Universidad. " },
+              { tipo: "descripcion", texto: "<strong>Impacto directo en la mejora continua</strong>" },
+              { tipo: "descripcion", texto: "En el marco del SIGAC se definen los siguientes mecanismos para promover la cultura de la prevención y la mejora continua:\n\n•	Gestión de riesgos: Entre 2018 y 2023, se implementó la metodología basada en la norma NTC ISO 31000 para identificar, analizar y tratar riesgos operativos.  Los informes incluyeron análisis estadísticos sobre zonas de riesgo inherente y residual, controles y monitoreo.\n\n•	Sistema de PQRSF: Entre 2018 y 2020, se automatizó el sistema de Peticiones, Quejas, Reclamos, Sugerencias y Felicitaciones (PQRSF), mejorando la captura de datos, asignación de roles y tiempos de respuesta. \n\n•	Encuesta de Satisfacción Institucional (ESI):  Desde 2013, la ESI evalúa la percepción de la comunidad universitaria sobre diversos aspectos.  En 2021, se integró en un único instrumento de evaluación, aplicado anualmente. Los resultados entre 2020 y 2024 están disponibles en plataformas digitales, permitiendo analizar la satisfacción y percepción en procesos de autoevaluación y mejora institucional. \n\nEl impacto directo de estos componentes de mejora continua se refleja en:\n\n•	Optimización de procesos, la reducción de riesgos y la mayor satisfacción de la comunidad universitaria\n\n•	Fomento de una cultura de mejora y adaptabilidad ante nuevos desafíos\n\n•	Retroalimentación constante que permite ajustes dinámicos en las políticas institucionales, asegurando una evolución constante en la calidad administrativa" },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "La comunidad académica valora los esfuerzos de la Universidad en rendición de cuentas, destacando la transparencia y accesibilidad de la información.  \n\n•	Según la ESI, el 84,1% de los administrativos y el 88,8% de los directivos están satisfechos o muy satisfechos con las auditorías internas.  \n\n•	Se identifican áreas de mejora, como la falta de detalle en algunos informes y la limitada socialización de decisiones en niveles intermedios de gestión. \n\n•	La rendición de cuentas es considerada fundamental para garantizar la calidad educativa y la confianza de la comunidad.  \n\n•	Persisten desafíos en términos de alineación estratégica y difusión efectiva de información. " }
+            ]
           }
         ]
       },
+      // FACTOR 3
       {
         nombre: "Desarrollo, Gestión y Sostenibilidad Institucional",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR3",
         caracteristicas: [
           {
             nombre: "Característica 7. Administración y gestión",
-            descripcion: "La Universidad de La Salle sustenta su sistema de administración y gestión en un marco normativo claro, coherente y articulado con su Misión Educativa Universitaria Lasallista y los lineamientos establecidos en el Plan Institucional de Desarrollo (PID). Esta normatividad guía la planeación, ejecución, evaluación y mejora de los procesos institucionales con el fin de asegurar la calidad y pertinencia de las acciones en los ámbitos académico, administrativo y organizacional.",
-            imagen: "imagenes/factor 3 caract 7.png"
+            bloques: [
+              { tipo: "descripcion", texto: "Desde el año 2019, la Universidad consolidó un modelo de gestión basado en procesos, estructurado dentro del Sistema Integrado de Gestión para el Aseguramiento de la Calidad (SIGAC). Este sistema permite articular políticas, procesos y resultados bajo un enfoque de mejora continua. " },
+              {
+                tipo: "tabla",
+                datos: {
+                  titulo: "SIGAC",
+                  columnas: ["Ciclo implementado", "PHVA (Planear, Hacer, Verificar, Actuar) dentro del SIGAC"],
+                  filas: [["Impacto de la gestión", "Favorece la planificación integral, identificación de interacciones clave entre procesos y establecimiento de mecanismos de seguimiento y evaluación institucional"], ["Documentación desarrollada", "- Caracterizaciones de procesos, - Matrices de indicadores, - Matrices de riesgos"], ["Objetivo de la documentación", "Administración orientada al logro de objetivos institucionales y cumplimiento de la Política de Calidad"], ["Herramienta clave actualizada (2023)", "Mapa Institucional de Procesos"], ["Función del Mapa Institucional", "Apoya la toma de decisiones estratégicas y operativas, fortalece la sinergia entre unidades y mejora la gestión de recursos"]]
+                }
+              },
+              {
+                tipo: "tabla",
+                datos: {
+                  titulo: "Plan de Desarrollo Laboral (PDL)",
+                  columnas: ["Año de implementación", "2018"],
+                  filas: [["Base del plan", "Diagnóstico participativo para identificar necesidades y oportunidades de mejora"], ["Objetivo principal", "Fortalecer el desempeño de los colaboradores administrativos"], ["Logros clave", "- Adopción de un modelo de gestión por competencias, - Alineación con los retos del siglo XXI, - Enfoque en bienestar integral y crecimiento profesional"], ["Fortalecimiento (2019–2024)", "Inclusión de salud mental, virtualidad, incentivos emocionales y esquemas como el teletrabajo"], ["Relevancia del teletrabajo", "Apuesta institucional por el bienestar y la eficiencia"], ["Beneficios del teletrabajo (2023)", "- Tiempo adicional promedio: 2 horas y 41 minutos por día, - Ahorro mensual promedio: $458.876 en transporte, alimentación y parqueadero"], ["Impacto de los beneficios", "Mejoran la calidad de vida de los trabajadores y promueven una gestión más sostenible"]]
+                }
+              },
+              {
+                tipo: "tabla",
+                datos: {
+                  titulo: "Líderes HIPO (High Potencial)",
+                  columnas: ["Objetivo principal", "Identificar, formar y empoderar colaboradores con alto potencial de liderazgo"],
+                  filas: [["Enfoque de liderazgo", "Transformacional y distribuido"], ["Propósitos del programa", "- Cualificar las potencialidades de los líderes, - Empoderar equipos, - Consolidar una red de líderes institucionales con visión estratégica"], ["Componentes del programa", "- Formación continua, - Encuentros presenciales, - Retiros formativos, - Procesos de retroalimentación"], ["Perfil esperado del líder HIPO", "Agente de cambio con habilidades en:, - Comunicación, - Toma de decisiones, - Empatía, - Trabajo colaborativo"], ["Impacto institucional", "Contribución significativa a la transformación cultural y organizacional de la Universidad"]]
+                }
+              },
+              { tipo: "descripcion", texto: "<strong>Reconocimientos institucionales</strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha implementado una política de reconocimientos y estímulos para valorar la labor de los colaboradores administrativos, promoviendo una cultura de gratitud y visibilizarían del esfuerzo colectivo. Entre los reconocimientos se destacan:\n\n •	El Homenaje a los 20 años de servicio. \n\n•	La celebración del Día de la secretaria.\n\n•	Los reconocimientos a comités como COPASST, el Comité de Convivencia Laboral y el Comité de Seguridad Vial.\n\n •	El programa “Estrellas Lasallistas”, que permite a los colaboradores elegir bonos personalizados como estímulo a su desempeño. \n\n•	La estrategia “Ruta 60/15”, una experiencia inmersiva en el campus de Yopal, orientada al fortalecimiento del espíritu lasallista y al reconocimiento de líderes como“Embajadores de Servicio”."},
+              { tipo: "imagen", src: "imagenes/factor 3 caract 7.png" },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción institucional</strong>"},
+              { tipo: "descripcion", texto: "La comunidad universitaria de la Universidad de La Salle ha expresado un alto nivel de satisfacción frente a la aplicación de las políticas y procesos de administración y gestión en el desarrollo de las funciones misionales de docencia, investigación, internacionalización, extensión y proyección social. Esta valoración se evidencia en el promedio general de 94.7% de satisfacción, lo que refleja una percepción positiva y generalizada sobre la eficiencia, pertinencia y efectividad de las acciones implementadas. \n\n Los docentes valoran en particular el acompañamiento institucional, la claridad en los procedimientos, y el soporte ofrecido por las unidades administrativas, lo cual facilita la labor académica y fortalece la articulación interdisciplinar. Los directivos resaltan la alineación estratégica de la gestión con los objetivos del Plan Institucional de Desarrollo y con los valores lasallistas, así como la capacidad de respuesta oportuna de las estructuras organizativas. Por su parte, los colaboradores administrativos destacan el ambiente laboral, las oportunidades de desarrollo profesional, los espacios de formación continua y las acciones de bienestar.\n\n Además, se reconoce que las políticas implementadas en los últimos años —como el fortalecimiento del liderazgo, el estímulo a la formación, el teletrabajo y los esquemas de reconocimiento— han contribuido a consolidar una cultura de mejora, participación y corresponsabilidad. Estas acciones han permitido construir un entorno institucional que fomenta el compromiso, la productividad, el sentido de pertenencia y la calidad del servicio."}
+            ]
           },
           {
             nombre: "Característica 8. Procesos de comunicación",
-            descripcion: "La Universidad de La Salle ha estructurado sus procesos de comunicación institucional en coherencia con los lineamientos del Plan de Desarrollo Institucional (PID), primero en el periodo 2015-2020 y posteriormente en el vigente 2021-2026. Como resultado del Proyecto 411 del PID anterior, en 2017 se consolidó la Dirección de Comunicación y Mercadeo (DCM), entidad responsable de la formulación y ejecución de la política institucional de comunicación. En el PID vigente 2021 – 2026, se tiene el proyecto 5.1 Fortalecimiento del plan de comunicación de la Universidad y en esta ventana se ha configurado una arquitectura comunicacional institucional fundamentada en tres pilares: la Política de Comunicación (aprobada en el año 2024), un organigrama especializado y un sistema general de comunicaciones. Esta estructura ha permitido la transición de un modelo fragmentado a uno sistémico, transversal, digital e inclusivo, en concordancia con la misión Lasallista.",
-            //imagen: "imagenes/caracteristica8.jpg"
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle ha estructurado sus procesos de comunicación institucional en coherencia con los lineamientos del Plan de Desarrollo Institucional (PID), primero en el periodo 2015-2020 y posteriormente en el vigente 2021-2026. Como resultado del Proyecto 4.11 del PID anterior, en 2017 se consolidó la Dirección de Comunicación y Mercadeo (DCM), entidad responsable de la formulación y ejecución de la política institucional de comunicación. En el PID vigente 2021 – 2026, se tiene el proyecto 5.1 Fortalecimiento del plan de comunicación de la Universidad y en esta ventana se ha configurado una arquitectura comunicacional institucional fundamentada en tres pilares: \n\n•	Política de Comunicación (aprobada en el año 2024) \n\n•	Organigrama especializado \n\n•	Sistema general de comunicaciones. \n\n Esta estructura ha permitido la transición de un modelo fragmentado a uno sistémico, transversal, digital e inclusivo, en concordancia con la misión Lasallista." },
+              { tipo: "descripcion", texto: "La Universidad integró estos procesos dentro del Sistema Integrado de Gestión para el Aseguramiento de la Calidad (SIGAC), permitiendo su articulación con la planeación estratégica, la gestión académica y administrativa, y los principios de mejora continua. La adopción de sistemas como SAP SLCM, Clientify, OnBase, Google Cloud Platform (GCP) y Google Analytics 4, entre otros, fortalece los procesos de comunicación, facilitando la trazabilidad, interoperabilidad y análisis de datos para la toma de decisiones."},
+              { tipo: "descripcion", texto: "<strong>Infraestructura Tecnológica y Sistemas de Información</strong>" },
+              { tipo: "descripcion", texto: "La migración del portal web institucional a GCP ha optimizado la estabilidad, la seguridad y la escalabilidad de los servicios digitales. Además, se adaptó el sitio web bajo estándares de accesibilidad (W3C) y diseño responsivo, asegurando su compatibilidad con lectores de pantalla y dispositivos móviles. Estas acciones se complementaron con el rediseño estructural de 36 páginas web internas y externas. \n\n Se integraron herramientas como SAP (para funciones académicas, financieras y de gestión humana), y Clientify (CRM para comunicación segmentada). En 2024, la Universidad envió más de 163.000 mensajes vía WhatsApp y más de 200.000 correos electrónicos mensuales, lo que evidencia una estrategia de comunicación multicanal activa y efectiva."},
+              { tipo: "descripcion", texto: "<strong>Comunicación Interna</strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha logrado una notable presencia en medios de comunicación, tanto tradicionales como digitales."},
+              {
+                tipo: "tabla",
+                datos: {
+                  columnas: ["Indicador", "Dato"],
+                  filas: [["Publicaciones externas en 2023", "1.710"], ["Promedio de publicaciones (2018–2022)", "1.570"], ["Usuarios del sitio web (nov. 2022–dic. 2024)", "Casi 4 millones"], ["Canales institucionales gestionados", "Instagram, Facebook, TikTok, YouTube, Spotify"]]
+                }
+              },
+              { tipo: "descripcion", texto: "<strong>Capacitaciones y Cultura Organizacional</strong>" },
+              { tipo: "descripcion", texto: "En el ámbito formativo, se impartieron talleres como “La varita mágica de la comunicación” y “Comunicación Asertiva”, dirigidos a fortalecer las competencias comunicativas y el liderazgo consciente entre docentes y administrativos. Estas capacitaciones buscan consolidar una cultura organizacional empática, efectiva y alineada con los valores institucionales." },
+              { tipo: "descripcion", texto:"<strong>Apreciaciones y nivel de satisfacción institucional</strong>" },
+              { tipo: "descripcion", texto: "La comunidad universitaria ha expresado niveles de satisfacción favorables respecto a los procesos de comunicación e infraestructura tecnológica disponibles. De acuerdo con la encuesta institucional más reciente (2025), se evidencian los siguientes resultados: \n\n•	86.0% de los encuestados se declara satisfecho o muy satisfecho con la efectividad y suficiencia de los controles de seguridad implementados para proteger la información institucional. \n\n•	89.0% considera que los controles institucionales de seguridad son adecuados y suficientes para salvaguardar la información relacionada con los procesos en los que participa.\n\n•	83.8% de los docentes, administrativos y directivos indican que los recursos informáticos y de comunicación (como computadores y software) satisfacen sus necesidades académicas y administrativas.\n\n•	86.0% de estos mismos grupos manifiestan que los recursos tecnológicos se encuentran actualizados.\n\n•	83.2% se declaran satisfechos o muy satisfechos con la suficiencia de los recursos informáticos y de comunicación disponibles en la institución." }
+            ]
           },
           {
             nombre: "Característica 9. Capacidad de gestión",
-            descripcion: "La Universidad de La Salle ha realizado importantes transformaciones normativas para fortalecer su capacidad de gestión. En 2021, implementó una reforma estatutaria que reorganizó la estructura orgánica institucional y reglamentó la conformación y funcionamiento de las unidades académicas. Esta actualización definió claramente los cargos, funciones y competencias de los niveles directivos, incluyendo rector, vicerrectores, decanos y directores de programa, así como los órganos responsables de aprobar y gestionar los procesos académicos y administrativos",
-            //imagen: "imagenes/caracteristica9.jpg"
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle ha realizado importantes transformaciones normativas para fortalecer su capacidad de gestión. En 2021, implementó una reforma estatutaria que reorganizó la estructura orgánica institucional y reglamentó la conformación y funcionamiento de las unidades académicas. Esta actualización definió claramente los cargos, funciones y competencias de los niveles directivos, incluyendo rector, vicerrectores, decanos y directores de programa, así como los órganos responsables de aprobar y gestionar los procesos académicos y administrativos. \n\nEstas reformas se enmarcan en el Plan Institucional de Desarrollo (PID) 2021–2026 y se articulan con el proyecto “BUHO - Bajo Un Mismo Horizonte”, el cual promueve una cultura de liderazgo transformacional y distribuido, priorizando la participación activa, la flexibilidad organizacional y la transparencia en la gestión. \n\nComplementariamente, se han adoptado políticas claras para la designación de cargos de dirección, mediante mecanismos institucionales transparentes que garantizan la idoneidad, integridad y mérito. Estas políticas son aplicadas bajo criterios de perfil, experiencia, formación y evaluación institucional, todo ello regulado en consonancia con la normativa interna vigente." },
+              { tipo: "descripcion", texto: "<strong>Estabilidad Financiera y Autonomía</strong>" },
+              { tipo: "descripcion", texto: "A pesar de los retos financieros derivados de factores externos como la pandemia, la Universidad ha mantenido su equilibrio operativo sin recurrir a endeudamiento externo. Ha utilizado sus ahorros institucionales para cubrir gastos e inversiones estratégicas, protegiendo así su autonomía financiera y su misión académica. \n\n Esta estrategia demuestra la existencia de una planificación financiera sólida, que prioriza la sostenibilidad a largo plazo y garantiza la ejecución de los planes estratégicos sin comprometer los recursos institucionales." },
+              { tipo: "descripcion", texto: "<strong>Desarrollo del Talento Humano</strong>" },
+              { tipo: "descripcion", texto: "En el ámbito del talento humano, se han ejecutado estrategias de promoción, reentrenamiento y reubicación de personal administrativo, como parte del PID 2021-2026. Estas políticas reconocen el talento interno y promueven el desarrollo profesional, lo que ha contribuido a reducir la rotación y a optimizar los costos de selección. Solo en 2024, 17 colaboradores fueron promovidos mediante esta estrategia. \n\n Igualmente, se desarrollaron capacitaciones específicas para el uso de herramientas como SAP (módulos de contabilidad, tesorería, cuentas por pagar/cobrar), gestión documental con OnBase, y cultura organizacional mediante cursos como la Inducción a la Cultura Lasallista, con más de 100 participantes anuales." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción institucional</strong>" },
+              { tipo: "descripcion", texto: "La comunidad universitaria ha expresado niveles de satisfacción favorables respecto a los procesos de la capacidad de gestión institucional. De acuerdo con la encuesta institucional más reciente (2025), se evidencian los siguientes resultados: \n\n •	89.4% de los encuestados se declara satisfecho o muy satisfecho acerca de si las directivas de la Universidad (Rector, Vicerrectores) ejercen su liderazgo con eficacia. \n\n •	88.3% considera que las directivas del programa y de la unidad académica (Director, Decano, Secretario, Asistente) ejercen su liderazgo con eficacia. \n\n •	95.8% de los docentes, administrativos y directivos indican que se aplican de manera transparente las políticas, normas y criterios académicos y administrativos establecidos para la selección, vinculación y evaluación de la permanencia de sus profesores y colaboradores." }
+            ]
           },
           {
             nombre: "Característica 10. Recursos de apoyo académico",
-            descripcion: "La Universidad de La Salle ha estructurado una normativa institucional robusta que orienta sus recursos de apoyo académico hacia el fortalecimiento de la formación integral, la equidad en el acceso al conocimiento y el bienestar de su comunidad educativa. Esta normativa se encuentra articulada con el Plan Institucional de Desarrollo (PID) 2021-2026, específicamente en el Proyecto 6.4: Recursos para el apoyo al aprendizaje y la investigación, que busca garantizar condiciones idóneas para la docencia, el aprendizaje, la creación de conocimiento y el desarrollo humano.",
-            //imagen: "imagenes/caracteristica9.jpg"
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle ha estructurado una normativa institucional robusta que orienta sus recursos de apoyo académico hacia el fortalecimiento de la formación integral, la equidad en el acceso al conocimiento y el bienestar de su comunidad educativa. Esta normativa se encuentra articulada con el Plan Institucional de Desarrollo (PID) 2021-2026, específicamente en el Proyecto 6.4: Recursos para el apoyo al aprendizaje y la investigación, que busca garantizar condiciones idóneas para la docencia, el aprendizaje, la creación de conocimiento y el desarrollo humano." },
+              { tipo: "descripcion", texto: "<strong>Recursos de apoyo</strong>" },
+              { tipo: "descripcion", texto: "La Dirección de Bibliotecas y Recursos de Apoyo, adscrita a la Vicerrectoría de Investigación y Transferencia, gestiona un sistema de bibliotecas que articula espacios físicos, recursos informativos y servicios digitales, destinados a promover el aprendizaje, la investigación y el desarrollo de competencias informacionales en el marco del Sistema de Acompañamiento Integral (SAI). Ofrece servicios como préstamo, asesorías, tutorías, talleres y formación en habilidades informacionales, mediante 22 talleres y 5 cursos electivos permanentes. Entre los recursos tecnológicos más destacados se encuentran plataformas como Turnitin (antiplagio), Mendeley y EndNote (gestores bibliográficos), NVivo (análisis cualitativo), y simuladores de negocios como Company Game. Además, se dispone del Sistema de Indicadores “Sigma”, que permite evaluar el desempeño bibliotecario en dimensiones como adquisiciones, consultas, capacitaciones y promoción de la lectura. \n\nLa Universidad cuenta con 34 bases de datos académicas suscritas, reorganizadas entre 2018 y 2024 según necesidades presupuestales y curriculares. Estas bases incluyen recursos de alto nivel como Scopus, ScienceDirect, Springer, EBSCO, Oxford University Press y Web of Science, entre otras. \n\nEn paralelo, se ofrecen convenios con 60 bibliotecas, acceso remoto a los recursos a través del portal institucional, y herramientas de búsqueda integradas como EDS, Sibbila y el Repositorio “Ciencia Unisalle”. \n\nEn cuanto al uso, la consulta de recursos digitales aumentó en un 25% entre 2020 y 2022, mientras que el uso de recursos físicos creció un 70% de 2022 a 2024, reflejando una recuperación de la presencialidad. En este periodo también se alcanzó un promedio de 10.000 participaciones en actividades formativas ofrecidas por la Biblioteca. \n\nDesde una perspectiva de infraestructura, las salas de sistemas cuentan con equipamiento especializado (perfil 1 y 2), software académico y horarios amplios para uso libre. Estas salas están disponibles en varias sedes, con más de 40.000 licencias activas durante el periodo 2018-2024, lo cual respalda la disponibilidad tecnológica para actividades académicas y de simulación." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción institucional</strong>" },
+              { tipo: "descripcion", texto: "Las apreciaciones de la comunidad académica en torno a los recursos de apoyo reflejan un alto grado de satisfacción. De acuerdo con los resultados de la Encuesta de Autoevaluación Institucional (marzo de 2025), se evidencian los siguientes resultados: \n\n•	El 96% de los docentes expresan satisfacción sobre el material bibliográfico y satisfacción de sus necesidades académicas. Además, el 94% valora positivamente la pertinencia y actualidad de estos recursos, mientras que el 91% considera que son suficientes para sus necesidades académicas. \n\n•	El 90% de los estudiantes se siente muy satisfecho o satisfecho con los recursos digitales, mientras que el 82% expresa la misma satisfacción respecto a los recursos físicos. Asimismo, el 82% de los estudiantes se siente muy satisfecho o satisfecho con el diseño y el ambiente de los espacios. Además, el 85% expresa satisfacción con el sitio web de la Biblioteca. \n\n•	El 83 % de los estudiantes está satisfecho o muy satisfecho con la información y referencia en los servicios de Biblioteca, el 80% con la consulta y el préstamo, el 77% con las salas de consulta, el 75% con las asesorías, tutorías, talleres y cursos electivos, y el 71% con la agenda académica y cultural. \n\n•	El 74.2% de la comunidad académica considera que la institución tiene escenarios de practica idóneos y suficientes para el desarrollo de competencias y hay un adecuado acompañamiento. \n\n•	El 91% de los directivos académicos y docentes, consideran que la Universidad cuenta con las capacidades institucionales en materia de recursos humanos, técnicos, tecnológicos y financieros para atender el número de estudiantes matriculados." },
+              { tipo: "descripcion", texto: "También se identifican oportunidades de mejora que requieren atención prioritaria, como la necesidad de actualizar algunos equipos obsoletos, implementar mantenimientos preventivos y correctivos más eficientes, y reorganizar el uso de salas especializadas y laboratorios, particularmente en las sedes Chapinero y Candelaria. Asimismo, se señala que la expansión académica no siempre ha estado acompañada por una evaluación rigurosa de la capacidad instalada, lo que genera tensiones entre la oferta educativa y la disponibilidad de recursos. Finalmente, se plantea la necesidad de agilizar los procesos de gestión de inventarios, baja de equipos, adquisición tecnológica y planificación de nuevos espacios, cuya lentitud ha limitado la respuesta a las necesidades específicas de las unidades académicas." }
+            ]
           },
           {
             nombre: "Característica 11. Infraestructura física y tecnológica",
-            descripcion: "La infraestructura física y tecnológica de la Universidad de La Salle es gestionada de forma articulada por la Dirección de Infraestructura y Servicios Administrativos (DISA), la Dirección de Tecnología de Información y Comunicaciones (DTIC) y la Dirección de Planeación Estratégica (DPE). Estas dependencias recopilan y analizan las necesidades de las unidades académicas y administrativas para orientar la priorización y ejecución de proyectos de inversión en infraestructura. En 2022, la Universidad formuló el Plan Estratégico de Infraestructura Física y Tecnológica, resultado de una metodología participativa que incluyó 234 miembros de la comunidad universitaria y 32 talleres. Este plan se convierte en instrumento guía para la toma de decisiones relacionadas con mantenimiento, modernización, adquisición y renovación de recursos físicos y tecnológicos.",
-            //imagen: "imagenes/caracteristica9.jpg"
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La infraestructura física y tecnológica de la Universidad de La Salle es gestionada de forma articulada por la Dirección de Infraestructura y Servicios Administrativos (DISA), la Dirección de Tecnología de Información y Comunicaciones (DTIC) y la Dirección de Planeación Estratégica (DPE). Estas dependencias recopilan y analizan las necesidades de las unidades académicas y administrativas para orientar la priorización y ejecución de proyectos de inversión en infraestructura. \n\nEn 2022, la Universidad formuló el Plan Estratégico de Infraestructura Física y Tecnológica, resultado de una metodología participativa que incluyó 234 miembros de la comunidad universitaria y 32 talleres. Este plan se convierte en instrumento guía para la toma de decisiones relacionadas con mantenimiento, modernización, adquisición y renovación de recursos físicos y tecnológicos. \n\nEn el ámbito normativo y operativo, la DISA diseñó una herramienta de control denominada SAPITO (Sistema de Administración de Proyectos de Infraestructura Técnica y Operativa), soportada en Microsoft Access, que permite el monitoreo detallado de actividades de mantenimiento preventivo y correctivo, asegurando la disponibilidad y confiabilidad de la planta física. Paralelamente, la DTIC ha implementado la plataforma SolarWinds, enfocada en el monitoreo continuo del Data Center, lo que permite la detección automática de incidencias y la mitigación proactiva de riesgos. \n\nEstas herramientas reflejan un enfoque de mejora continua, alineado con la capacidad instalada y el crecimiento de la Universidad, y demuestran un compromiso con la eficiencia operativa y la sostenibilidad tecnológica." },
+              { tipo: "descripcion", texto: "<strong>Infraestructura física</strong>" },
+              { tipo: "descripcion", texto: "La Universidad posee tres sedes en Bogotá: Chapinero, Norte y Candelaria, con un total de 210.000 m² de terreno y 114.600 m² construidos. Entre 2018 y 2024 se realizaron importantes inversiones, entre las principales se encuentran:" },
+              {
+                tipo: "tabla",
+                datos: {
+                  columnas: ["Sede Chapinero", "Sede Norte", "Sede Candelaria"],
+                  filas: [["Adecuaciones en Clínica de Optometría de 6478 m2 en consultorios de adultos y niños. Adecuación de las casas para E-Learning, la VPDH y la Dirección de Extensión. Espacios de bienestar: “columpios” Espacio de atención al aspirante en la casa Bicentenario. Rampa metálica en Teatro para personas con movilidad reducida", "Habilitación de 9.200 m2 de ocho laboratorios y dos plantas de alimentos para la producción. Laboratorio de Necropsia. Ascensor para personas con movilidad reducida. Espacios de bienestar: Domos Eco-campus. Cancha deportiva. Oficinas y áreas de atención de estudiantes de la VPDH y oficina de supervisión DISA", "Traslado del gimnasio y la adecuación de baños y camerinos. Sala de Exposiciones: con iluminación perimetral tipo galería, se adecuaron baterías sanitarias para hombres, mujeres y personas con movilidad reducida. Espacios de bienestar: Área golfito, Laboratorios Ciencias básicas, Talleres arquitectura, Recuperación e intervención de 431m2 de plazoleta y Fase 1 Teatro"]]
+                }
+              },
+              { tipo: "descripcion", texto: "<strong>Infraestructura tecnológica</strong> \n\nLas inversiones entre 2018 y 2024 abarcan: \n\n•	Renovación de más de 1100 equipos de cómputo entre PC, portátiles, workstations y equipos Mac. \n\n•	Implementación progresiva de WiFi 6 en todas las sedes.\n\n•	Modernización del servicio telefónico al implementar telefonía IP en todas las sedes\n\n•	Implementación del proyecto SAP con las verticales SLCM, HCM y ERP\n\n•	Implementación de herramientas EDR (End Point Protection) y DDI (Deep Discovery Protection) para protección contra amenazas internas y externas" },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción institucional</strong>" },
+              { tipo: "descripcion", texto: "La comunidad universitaria ha valorado positivamente los esfuerzos institucionales en infraestructura física y tecnológica. Según la Encuesta de Autoevaluación Institucional de marzo de 2025, los niveles de satisfacción son altos en varios aspectos: \n\n•	El 90.6% de la comunidad se encuentra satisfecho o muy satisfecho con la calidad de los espacios destinados al desarrollo de actividades.\n\n•	El 91% de los encuestados manifestaron estar satisfechos con la disponibilidad y accesibilidad de los espacios destinados al desarrollo de actividades académicas, investigativas, culturales y de extensión.\n\n•	El 68.1% de los estudiantes manifiestan estar satisfechos o muy satisfechos con el uso y disponibilidad de recursos audiovisuales; no obstante, el 23.3% expresa que no sabe o no responde sobre la disponibilidad de estos recursos." }
+            ]
           },
           {
             nombre: "Característica 12. Recursos y gestión financiera",
-            descripcion: "La gestión financiera de la Universidad de La Salle se encuentra firmemente articulada al Plan Institucional de Desarrollo (PID) 2021-2026, el cual orienta la planificación presupuestal, la asignación de recursos y la sostenibilidad operativa a corto, mediano y largo plazo. La normativa que regula la gestión financiera está sustentada en tres pilares:\n\n• Elaboración y control presupuestal: El presupuesto anual es diseñado por la Coordinación de Presupuesto y Costos, bajo la Dirección Financiera y la Vicerrectoría Administrativa y Financiera. Este se somete a revisión y aprobación del Consejo Superior. El proceso incluye cronogramas detallados, participación amplia de unidades académicas y mecanismos de aprobación previamente definidos.\n\n• Sistema de gestión financiera SAP: La Universidad emplea el sistema ERP SAP S4/HANA, especialmente su módulo de Found Management (FM), para controlar y monitorear presupuestos. Este sistema permite una trazabilidad completa del gasto desde su planificación hasta la ejecución, previniendo sobreejecuciones y permitiendo un control estricto de los rubros presupuestales.\n\n• Acuerdo anual de traslados presupuestales: Formalizado y aprobado por el Consejo de Coordinación, establece reglas para la redistribución de recursos, asegurando la coherencia contable y operativa del gasto institucional.",
-            imagen: "imagenes/factor 3 caract 12.png"
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La gestión financiera de la Universidad de La Salle se encuentra firmemente articulada al Plan Institucional de Desarrollo (PID) 2021-2026, el cual orienta la planificación presupuestal, la asignación de recursos y la sostenibilidad operativa a corto, mediano y largo plazo. La normativa que regula la gestión financiera está sustentada en tres pilares: \n\n•	Elaboración y control presupuestal: El presupuesto anual es diseñado por la Coordinación de Presupuesto y Costos, bajo la Dirección Financiera y la Vicerrectoría Administrativa y Financiera. Este se somete a revisión y aprobación del Consejo Superior. El proceso incluye cronogramas detallados, participación amplia de unidades académicas y mecanismos de aprobación previamente definidos.\n\n•	Sistema de gestión financiera SAP: La Universidad emplea el sistema ERP SAP S4/HANA, especialmente su módulo de Found Management (FM), para controlar y monitorear presupuestos. Este sistema permite una trazabilidad completa del gasto desde su planificación hasta la ejecución, previniendo sobre ejecuciones y permitiendo un control estricto de los rubros presupuestales.\n\n•	Acuerdo anual de traslados presupuestales: Formalizado y aprobado por el Consejo de Coordinación, establece reglas para la redistribución de recursos, asegurando la coherencia contable y operativa del gasto institucional." },
+              {
+                tipo: "tabla",
+                datos: {
+                  columnas: ["Año", "Medida Implementada", "Descripción / Impacto"],
+                  filas: [["2020", "Beca Solidaria", "Reducción del 30% en el valor de la matrícula para todos los estudiantes de pregrado y posgrado, nuevos y antiguos"], ["2020", "Sostenimiento de personal", "Mantenimiento de la planta de personal docente y administrativo sin reducciones"], ["2020", "Eliminación del cobro por inscripción", "Aplicado a estudiantes nuevos"], ["2021", "Descuento en matrículas – Primer semestre", "15%"], ["2021", "Descuento en matrículas – Segundo semestre", "10%"], ["2020–2021", "Inversión total para mitigar efectos de la pandemia", "Más de $21.670 millones"]]
+                }
+              },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\"><strong>Gasto institucional año 2020 para contener efectos pandemia</strong></p>" },
+              { tipo: "imagen", src: "imagenes/factor 3 caract 12.png" },
+              { tipo: "descripcion", texto: "Otro aspecto institucional importante consiste en que en el año 2019 los ingresos académicos representaron el 71,2% de los ingresos totales, siendo la cifra más alta de participación en los últimos seis años, cifra que ha venido en descenso para representar en 2024 un 67,3%, dándole campo a otros ingresos que crecen con los años como los ingresos ordinarios en donde se registran todos los ingresos provenientes de consultorías, asesorías y la actividad productiva de las Unidades Generadoras de Ingreso, segundo renglón de ingresos más importante en 2024." },
+              { tipo: "descripcion", texto: "<strong>Acciones significativas</strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha implementado múltiples acciones para fortalecer su modelo financiero, diversificando fuentes de ingresos y optimizando el uso de recursos:\n\n•	Crédito estudiantil: La Universidad ha financiado matrículas por más de $13.084 millones desde 2022 mediante dos líneas de crédito directo, siendo la más popular la línea 30/70, que permite al estudiante pagar el 30% inicialmente y el resto en cuotas.\n\n•	Durante estos seis años de análisis el índice de endeudamiento ha sido variable y se mantiene en niveles bajos lo que indica estabilidad financiera y menor dependencia de financiación con terceros, minimizando riesgos de tasa de interés y pago de obligaciones.\n\n•	La Universidad mantiene un muy buen índice de liquidez lo que le permite cubrir las obligaciones de corto plazo con sus activos corrientes en una relación 2 a 1 para 2024. Esto asegura el cumplimiento de pago a proveedores y a colaboradores y a su vez otorga mayor estabilidad financiera y capacidad para enfrentar contingencias sin necesidad de deuda\n\n•	Financiación pública y estatal: El ICETEX financia cerca de 1.400 matrículas semestrales. Además, programas como “Jóvenes a la U” y “Reto a la U” de la Agencia Atenea han incrementado la cobertura de estudiantes en la institución.\n\n•	Los aportes del Estado, especialmente del Ministerio de Ciencia, Tecnología e Innovación, han sido fundamentales para el desarrollo de diversos proyectos de investigación en la Universidad de La Salle. Entre ellos destaca uno financiado con $6.025 millones en regalías, enfocado en el desarrollo de ingredientes naturales innovadores a partir de productos forestales no maderables del Chocó, con aplicaciones en las industrias cosmética y alimenticia. Además, la Universidad ha fortalecido su vínculo con el sector empresarial mediante la participación conjunta en proyectos de investigación." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción institucional</strong>" },
+              { tipo: "descripcion", texto: "Los talleres focales realizados por la Universidad permitieron recopilar valiosos aportes sobre la gestión financiera, reconociendo avances en sostenibilidad, expansión regional y diversificación de ingresos, pero también evidenciando la necesidad de un enfoque presupuestal más participativo y flexible. La comunidad universitaria destacó la importancia de alinear mejor la asignación de recursos con las particularidades de los programas, especialmente en regiones. Aunque se valoran la incorporación de análisis de viabilidad financiera en proyectos, la promoción de una comunicación más clara y el establecimiento de esquemas de incentivos, persisten desafíos relacionados con la complejidad normativa, la centralización en la toma de decisiones y la necesidad de fortalecer la comunicación interna. Finalmente, se reconoce que desde 2018 la Universidad ha avanzado significativamente en su transformación institucional, sentando bases sólidas para una planificación estratégica más efectiva y sostenible." }
+            ]
           }
         ]
       },
+      // FACTOR 4
       {
         nombre: "Mejoramiento Continuo y Autorregulación",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR4",
@@ -474,43 +404,160 @@
           }
         ]
       },
+      //FACTOR 5
       {
         nombre: "Estructura y Procesos Académicos",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR5",
         caracteristicas: [
           {
-            nombre: "Característica 13. Políticas académicas.",
-            descripcion: "Evalúa las políticas académicas de la institución.",
-            imagen: "imagenes/caracteristica13.jpg"
+            nombre: "Característica 17. Componentes formativos",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad de la Universidad de La Salle</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle estructura su currículo en tres niveles: macrocurricular, mesocurricular y microcurricular, con base en el Proyecto Educativo Universitario Lasallista (PEUL), el Marco Nacional de Cualificaciones (MNC) y las políticas del Ministerio de Educación Nacional.  Este enfoque busca garantizar una formación integral, crítica y competente, adaptada a los retos sociales, económicos y políticos actuales.  La autoevaluación y la mejora continua son pilares fundamentales, promoviendo la innovación pedagógica y la alineación de los resultados de aprendizaje con las competencias esperadas. Las políticas curriculares están detalladas en los librillos institucionales 82 y 83." },
+              { tipo: "descripcion", texto: "<strong>Gestión microcurricular:</strong>\n\n•	La gestión microcurricular se centra en los syllabus, que integran competencias, resultados de aprendizaje y estrategias de evaluación.  \n\n•	Los resultados de aprendizaje se evidencian mediante productos como informes, modelos y proyectos, evaluados con rúbricas detalladas.  \n\n•	En 2024-2, se ofertaron 110 programas en Bogotá, y se implementaron estrategias didácticas activas para contextualizar el conocimiento en escenarios reales. " },
+              { tipo: "descripcion", texto: "<strong>Seguimiento mesocurricular: </strong>" },
+              { tipo: "descripcion", texto: "Desde 2024-2, se pilotearon pruebas internas de resultados de aprendizaje mesocurricular (RAm) en 9 programas, alojadas en Moodle.  Estas pruebas se desarrollan en cinco fases: alistamiento, diseño de preguntas, soporte técnico, aplicación y análisis de resultados. Los KPI definidos incluyen la tasa de aprobación en pruebas RAm y el promedio de desempeño en competencias. " },
+              { tipo: "descripcion", texto: "<strong>Recursos y capacidades: </strong>" },
+              { tipo: "descripcion", texto: "Las sedes Chapinero, Candelaria y Norte cuentan con laboratorios especializados, aulas y espacios interactivos que apoyan los procesos académicos.  Por ejemplo, la sede Chapinero dispone de laboratorios de optometría con capacidades entre 12 y 40 estudiantes, la sede Candelaria ofrece laboratorios de hidráulica, estructuras y biología con capacidades de hasta 30 estudiantes, y la sede Norte cuenta con 19 laboratorios y 2 plantas." },
+              { tipo: "descripcion", texto: "<strong>Formación extracurricular: </strong>\n\n•	El CLEO (Centro de Lectura, Escritura y Oralidad) ofrece talleres, cursos y módulos virtuales en habilidades básicas, comunicación escrita y razonamiento lógico. \n\n•	La VPDH promueve espacios interdisciplinarios alineados con los Objetivos de Desarrollo Sustentable (ODS), desarrollando habilidades blandas y competencias globales. " },
+              { tipo: "descripcion", texto: "<strong>Internacionalización e Interdisciplinariedad: </strong>\n\n•	La Universidad fomenta la movilidad internacional mediante convenios, workshops y seminarios virtuales.  Aunque se reconocen avances en la integración de experiencias internacionales, se identifican oportunidades para mejorar la difusión y el acompañamiento durante los intercambios. \n\n•	Se han creado programas como la Maestría en Educación STEM y la Tecnología en Gestión de Turismo Sostenible, que promueven la integración de saberes.  Sin embargo, se requiere consolidar un modelo sistémico para articular mejor las unidades académicas. " },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "La encuesta de satisfacción institucional revela:\n\n•	El 88,7% de los estudiantes perciben un compromiso con la calidad académica, y el 86,1% considera excelentes las asignaturas del programa. \n\n•	El 91,7% de la comunidad universitaria valora la claridad de los criterios de evaluación.  \n\n•	Los estudiantes destacan el acompañamiento fraterno del SAI y la movilidad internacional como aspectos positivos. \n\nSin embargo, se identifican áreas de mejora en infraestructura, recursos digitales y conectividad.  Los docentes sugieren fortalecer la capacitación en evaluación y actualizar los medios educativos.  En cuanto a la flexibilidad curricular, aunque se reconocen avances, se señala la necesidad de equilibrar su aplicación en todas las modalidades y jornadas. " },
+            ]
           },
           {
-            nombre: "Característica 14. Gestión de la actividad académica.",
-            descripcion: "Analiza la gestión de las actividades académicas institucionales.",
-            imagen: "imagenes/caracteristica14.jpg"
+            nombre: "Característica 18. Componentes pedagógicos y de evaluación",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional de la Universidad de La Salle</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle fundamenta la formación de sus docentes en un modelo integral que articula diversas dimensiones del quehacer pedagógico, estructurado en nueve campos de formación, conforme con lo establecido en el Librillo 84. Esta estructura se ha consolidado desde los años ochenta, posicionando a la formación docente como una tradición con enfoque en las problemáticas estructurales de la educación superior y en los desafíos contemporáneos." },
+              { tipo: "descripcion", texto: "<strong>•	Campos de formación docente:</strong>\n\n •	Lasallismo\n\n•	Competencias de ciudadanía global\n\n•	Competencias pedagógicas y didácticas\n\n•	Competencias disciplinares\n\n•	Competencias para el pensamiento crítico\n\n•	Competencias digitales\n\n•	Competencias investigativas\n\n•	Competencias para la gestión y el liderazgo educativo\n\n•	Problemáticas contemporáneas y paradigmas emergentes" },
+              { tipo: "descripcion", texto: "<strong>•	Modalidad de los cursos:</strong>\n\n •	Obligatoriedad: cursos del CIF y Centro Escuela\n\n•	Voluntariedad: otros cursos ofertados según el perfil y necesidades de los docentes" },
+              { tipo: "descripcion", texto: "La formación docente ha evolucionado, adaptándose a las exigencias del contexto, como se evidencia en los siguientes ejes:" },
+              { tipo: "descripcion", texto: "<strong>Competencias digitales:</strong> \n\n•	Impulso significativo durante la pandemia de Covid-19.\n\n•	En 2020, 316 docentes participaron en el curso “Diseño ágil aplicado a la creación de cursos apoyados por TIC”.\n\n•	Entre 2018 y 2024, 990 docentes se formaron en este campo." },
+              { tipo: "descripcion", texto: "<strong>Competencias pedagógicas y didácticas:</strong> \n\n•	En 2023-1, 117 docentes participaron debido a la actualización de los lineamientos curriculares y la construcción de resultados de aprendizaje mesocurriculares.\n\n•	Entre 2018 y 2024, 703 docentes recibieron formación en estas competencias." },
+              { tipo: "descripcion", texto: "<strong>Simposios de experiencias docentes:</strong> \n\n•	Eventos bianuales organizados por la VRAC para la reflexión pedagógica.\n\n•	Temáticas: 2021: “Evaluación en contextos educativos”, 2023: “El lugar del pensamiento en la educación”, 2025: “El cuidado de la salud mental en contextos educativos”\n\n•	Participación de expertos nacionales e internacionales y fortalecimiento de redes docentes" },
+              { tipo: "descripcion", texto: "<strong>Inversión en formación docente (2018-I a 2024-I):</strong> \n\n•	$479.144.459 en honorarios" },
+              { tipo: "descripcion", texto: "<strong>Participación docente:</strong> \n\n•	Entre 2018 y 2024 hubo 2.737 participaciones de docentes de planta y cátedra en cursos de formación profesoral\n\n•	Mayor énfasis durante la pandemia en formación digital y pedagógica." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad </strong> \n\n La encuesta de autoevaluación institucional realizada en marzo de 2025 evaluó la percepción de estudiantes, docentes y directivos académicos sobre los cambios metodológicos derivados de las evaluaciones estudiantiles. \n\n•	El 95,2% de los docentes encuestados afirmó estar satisfecho o muy satisfecho con los cambios metodológicos derivados de las evaluaciones estudiantiles.\n\n•	El 73,1% de los estudiantes se declaró muy satisfecho o satisfecho sobre el mismo tema. " }
+            ]
           },
           {
-            nombre: "Característica 15. Procesos de creación, modificación y ampliación de programas académicos.",
-            descripcion: "Evalúa los procesos relacionados con la creación y modificación de programas académicos.",
-            imagen: "imagenes/caracteristica15.jpg"
+            nombre: "Característica 19. Componente de interacción y relevancia social",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional de la Universidad de La Salle</strong>" },
+              { tipo: "descripcion", texto: "La gestión curricular en la Universidad de La Salle se orienta por un marco normativo que se articula en tres niveles: micro, meso y macrocurricular. Estos niveles responden tanto a disposiciones nacionales como a criterios institucionales propios como la interdisciplinariedad, flexibilidad y diálogo de saberes. Las políticas se registran en documentos oficiales como los Librillos institucionales, especialmente el Librillo 84, y se apoyan también en publicaciones académicas como la Revista de la Universidad de La Salle (números 88 y 89).\n\nAdemás, el desarrollo de los Proyectos Educativos de Facultad, Programa y Departamento (PEF, PEP, PED) evidencia una articulación directa entre las políticas institucionales y las demandas del contexto, considerando elementos como el horizonte lasallista, los conceptos disciplinares, los núcleos problémicos, la evaluación, la intersectorización, y la internacionalización." },
+              { tipo: "descripcion", texto: "<strong>Actualización curricular basada en contexto</strong>" },
+              { tipo: "descripcion", texto: "La Universidad realiza una evaluación estructurada de necesidades sociales, culturales y laborales, que deriva en creación o modificación de programas académicos. Este proceso es liderado por la Dirección Currículo, Aprendizaje y Evaluación (DCAE), con apoyo de la Dirección de Planeación Estratégica (DPE) y otras instancias. El proceso consta de seis etapas:" },
+              {
+                tipo: "tabla",
+                datos: {
+                  titulo: "Etapas para la creación o modificación de programas académicos",
+                  columnas: ["Etapa", "Actividad Principal"],
+                  filas: [["1", "Identificación y justificación de necesidades formativas por unidades académicas."], ["2", "Estudio de viabilidad conjunto entre DCAE y DCM, incluyendo análisis de mercado, matrícula, competencia, y buyer persona."], ["3", "Análisis de pertinencia y contexto (ODS, mercado laboral, planes de desarrollo)."], ["4", "Evaluación y aval del Comité Central de Currículo."], ["5", "Evaluación y aprobación por el Consejo Académico."], ["6", "Aprobación por el Consejo Superior."]]
+                }
+              },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">Fuente: Fuente: DCAE, 2025</p>" },
+              { tipo: "descripcion", texto: "El estudio de viabilidad incluye un score entre 0 y 3. Los resultados han oscilado entre 2,1 y 2,6, lo que indica viabilidad favorable. Se analizan factores como demanda, ubicación geográfica, niveles de formación y expectativas del mercado laboral." },
+              { tipo: "descripcion", texto: "<strong>Articulación de niveles y modalidades para una formación continua, flexible e interdisciplinar</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle ha desarrollado una estrategia integral de articulación entre niveles y modalidades de formación, respondiendo a los cambios generacionales, las exigencias del sector productivo y el Marco Nacional de Cualificaciones. Esta estrategia favorece trayectorias formativas continuas y flexibles, desde el nivel técnico hasta el doctorado.\n\n•	Se han implementado 8 programas técnicos y tecnológicos aprobados por el MEN en áreas estratégicas como agropecuarias, economía e ingeniería.\n\n•	Existen tracks formativos que permiten compartir espacios académicos entre programas de diferentes niveles.\n\n•	Se promueve el cogrado, facilitando que estudiantes de pregrado cursen créditos de posgrado.\n\n•	En el nivel posgradual, se han creado bolsas de créditos electivos y núcleos comunes interdisciplinares, fortaleciendo la interdisciplinariedad.\n\n•	Se han modificado 80 programas para adaptarse a nuevas modalidades, regiones y necesidades formativas.\n\nEstas acciones permiten una formación continua, pertinente y articulada, orientada a responder a los desafíos regionales, nacionales y globales." },
+              { tipo: "descripcion", texto: "<strong>Educación continuada </strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha fortalecido su apuesta por la formación a lo largo de la vida a través de programas de educación continuada con un total de 350 programas entre 2018 y 2024:" },
+              {
+                tipo: "tabla",
+                datos: {
+                  titulo: "Número de programas de Educación Continuada por tipo",
+                  columnas: ["Tipo de Programa", "Número", "% Total"],
+                  filas: [["Diplomados", "117", "33,4 %"], ["Cursos", "95", "27,1 %"], ["Especializados", "50", "14,3 %"], ["Seminarios y congresos", "45", "12,9 %"], ["Otros", "43", "12,3%"]]
+                }
+              },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">Fuente: DEVIM, 2025</p>" },
+              { tipo: "descripcion", texto: "Las áreas temáticas más relevantes han sido:\n\n•	Tecnología y transformación digital\n\n•	Gestión empresarial y metodologías ágiles\n\n•	Salud y especialización clínica\n\n•	Sostenibilidad y desarrollo territorial\n\n•	Innovación pedagógica y educación inclusiva" },
+              { tipo: "descripcion", texto: "•	Las Unidades Académicas líderes en oferta han sido:\n\n•	Ciencias de la Educación (67 programas)\n\n•	Ingeniería y Ciencias de la Salud (57 cada una)\n\n•	Agropecuarias (45)\n\n•	Economía, Empresa y Desarrollo Sostenible (35)" }
+            ]
+          },
+          {
+            nombre: "Característica 20. Procesos de creación, modificación y ampliación de programas académicos",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional de la Universidad de La Salle</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle se rige por el Decreto 1330 de 2019 y el Decreto 0529 de 2024, que regulan el registro calificado de programas académicos en Colombia. Además, ha desarrollado documentos base de calidad y lineamientos curriculares que orientan la creación, modificación y renovación de programas académicos. Entre estos destacan los siguientes librillos institucionales: •	Librillo 82 (2022): Lineamientos curriculares macro y microcurriculares. \n\n•	Librillo 83 (2023): Gestión microcurricular basada en competencias y evaluación.\n\n•	Librillo 85 (2024): Internacionalización del currículo. \n\n•	Librillo 86 (2024): Orientaciones para programas técnicos y tecnológicos. \n\n•	Librillo 88 (2024): Metodologías para programas virtuales y a distancia. " },
+              { tipo: "descripcion", texto: "<strong>Programas nuevos aprobados (2018-2024) </strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle creó 65 programas académicos entre 2018 y 2024, distribuidos en:" },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\"><strong>Número de programas creados por nivel de formación</strong></p>" },
+              { tipo: "imagen", src: "imag-cont/fac 5 graf 1.png" },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">Fuente: DPE - DCAE, 2025</p>" },
+              { tipo: "descripcion", texto: "En cuanto a modalidades:" },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\"><strong>Programas nuevos aprobados por el MEN entre el 2018 – 2024 según modalidad</strong></p>" },
+              { tipo: "imagen", src: "imag-cont/fac 5 graf 2.png" },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">Fuente: DPE - DCAE, 2025</p>" },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">*El número de programas nuevos varia debido a que hay programas con registro único con dos o más modalidades</p>" },
+              { tipo: "descripcion", texto: "Este crecimiento refleja un enfoque en diversificación y respuesta a las demandas del mercado laboral y académico. " },
+              { tipo: "descripcion", texto: "<strong>Expansión y modernización de la infraestructura física y tecnológica </strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha fortalecido sus capacidades físicas con intervenciones en sus tres principales sedes:\n\n•	Sede Chapinero: modernización de aulas, oficinas, auditorios, áreas de bienestar y coworking. Se adecuaron espacios para FEEDS, se renovó la Clínica de Optometría y se crearon laboratorios como Fintrade y preclínicos de optometría.\n\n•	Sede Candelaria: mejoras en planta eléctrica, gimnasio, laboratorios de ciencias básicas, salas de sistemas y teatro. Se inauguró el espacio “Golfito” y se renovaron áreas culturales y de acceso.\n\n•	Sede Norte: adecuaciones en clínicas, laboratorios (lácteos y cárnicos), traslado de oficinas al Edificio San Benildo, zona de juegos y construcción del Ecocampus como espacio de bienestar y sostenibilidad." },
+              { tipo: "descripcion", texto: "<u>Ambientes para la educación mediada por tecnología</u>. Se ha consolidado la Dirección de E-learning, que incluye: \n\n•	Laboratorio EdTech. \n\n•	Salas para formación docente, videoconferencias, coworking y grabación.\n\n•	Infraestructura tecnológica con planta eléctrica, red de datos y acceso a internet de alta velocidad.\n\n•	Se ha adquirido una amplia gama de herramientas para producción digital y enseñanza, incluyendo: Moodle, Webex, Intelliboard, SMOWL, CloudLabs, Adobe CC, Articulate 360, Unity Pro, Genially, Second Life, entre otros. \n\n Estas acciones consolidan la infraestructura física y virtual necesaria para sostener una educación de alta calidad, flexible, accesible y tecnológica." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "En los talleres focales la comunidad universitaria expresa lo siguiente: \n\n <strong>Estudiantes:</strong>\n\n•	Valoran los lineamientos institucionales como apoyo para el diseño curricular.\n\n•	Reconocen el acompañamiento contextualizado de algunas facultades.\n\n•	Manifiestan limitaciones en el acceso a recursos para la innovación pedagógica y tecnológica.\n\n•	Perciben inequidad entre las modalidades presencial y virtual en calidad y costos. \n\n <strong>Docentes:</strong>\n\n•	Consideran que los lineamientos han sido útiles para estructurar programas con criterios de calidad y pertinencia.\n\n•	Aprecian el soporte en la formulación y renovación de programas.\n\n•	Señalan la rigidez de ciertos procedimientos que dificultan respuestas ágiles.\n\n•	Indican la necesidad de mejorar la calidad y actualidad de los estudios de mercado.\n\n<strong>Directivos:</strong>\n\n•	Destacan la consolidación de una oferta académica más ordenada y coherente.\n\n•	Identifican debilidades en la evaluación del impacto de los programas.\n\n•	Señalan que los procesos administrativos dificultan la innovación.\n\n<strong>Egresados:</strong>\n\n•	Solicitan mayor alineación curricular con el mundo laboral.\n\n•	Proponen fortalecer la comunicación entre programas y red de egresados." }
+            ]
           }
         ]
       },
+      // FACTOR 6
       {
         nombre: "Aportes de la Investigación, la Innovación, el Desarrollo Tecnológico y la Creación al Entorno",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR6",
         caracteristicas: [
           {
-            nombre: "Característica 16. Formación para la investigación.",
-            descripcion: "Analiza los procesos de formación para la investigación en la institución.",
-            imagen: "imagenes/caracteristica16.jpg"
+            nombre: "CCaracterística 21. Formación para la investigación, creación e innovación",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La formación en investigación en la Universidad de La Salle está regulada por políticas y lineamientos institucionales aprobados por el Consejo Académico. Entre ellos se destacan: \n\n•	Acuerdo 014 de 2023, que actualiza los lineamientos para el funcionamiento de los semilleros de investigación.\n\n•	Acuerdo 004 de 2018, que regula las modalidades de grado con componente investigativo.\n\n•	Librillo 83 sobre gestión microcurricular, que orienta la articulación curricular desde los núcleos problémicos.\n\n•	Las actualizaciones de Proyectos Educativos de Programa (PEP), Facultad (PEF) y Departamento (PED), alineados con la estructuración investigativa.\n\n•	La integración con el Sistema de Información de Gestión de la Investigación e Innovación (SIGIIP) y el SIEUL como plataformas de monitoreo y evaluación." },
+              { tipo: "descripcion", texto: "<strong>Enfoque curricular investigativo</strong>" },
+              { tipo: "descripcion", texto: "La Universidad promueve la formación investigativa desde los núcleos problémicos como eje articulador del currículo. Esta estrategia se aplica desde pregrado hasta doctorado:\n\n•	En pregrado: se aborda desde la Fundamentación Investigativa.\n\n•	En posgrado: se estructura como Praxis Investigativa, con producción académica significativa." },
+              { tipo: "descripcion", texto: "Los núcleos problémicos están presentes en todas las áreas formativas y tipos de asignatura, como se sistematiza en el Librillo 83." },
+              { tipo: "descripcion", texto: "<strong>Semilleros de investigación</strong>" },
+              { tipo: "descripcion", texto: "Los semilleros son fundamentales en la formación investigativa. Tras una autoevaluación en 2022, se redujo el número de semilleros activos para mejorar su calidad:" },
+              {
+                tipo: "tabla",
+                datos: {
+                  titulo: "Número de semilleros, estudiantes y productos registrados",
+                  columnas: ["Año", "Semilleros Activos", "Estudiantes", "Productos Registrados"],
+                  filas: [["2018", "95", "1.259", "23"], ["2021", "124", "1.727", "37"], ["2023", "43", "360", "47"], ["2024", "44", "401", "67"]]
+                }
+              },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">Fuente: VRIT, DPE, Unidades Académicas, 2025 </p>" },
+              { tipo: "descripcion", texto: "<strong>Formación en doctorado</strong>" },
+              { tipo: "descripcion", texto: "La Universidad cuenta con nueve programas de doctorado, cuatro de ellos con estudiantes graduados. A diciembre de 2024, se registraron 219 tesis aprobadas, generando productos como artículos indexados, capítulos de libro y ponencias." },
+              { tipo: "descripcion", texto: "<strong>Otras estrategias de formación investigativa</strong>" },
+              { tipo: "descripcion", texto: "Además de los semilleros, los estudiantes participan en trabajos de grado, eventos científicos, publicaciones en coautoría y cursos especializados. Entre 2018 y 2024, se registraron:\n\n•	834 trabajos de grado con componente investigativo. \n\n•	800 publicaciones con coautoría de estudiantes. \n\n•	2775 estudiantes en cursos y talleres ofrecidos por la biblioteca." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "Según los resultados de la Encuesta de Satisfacción Institucional y talleres focales:\n\n•	El 91,1 % de los estudiantes afirma que los docentes promueven la investigación como herramienta de aprendizaje.\n\n•	El 89,1 % considera que la investigación es prioritaria en sus programas.\n\n•	El 88,1 % se siente satisfecho con la claridad y pertinencia de las líneas de investigación en su formación.\n\n•	El 91,6 % valora positivamente que los docentes promuevan el pensamiento crítico, creativo e innovador.\n\n•	El 83,6 % reconoce la posibilidad de participar en semilleros o actividades de emprendimiento.\n\n•	El 85,2 % percibe que desarrolla competencias investigativas para su campo profesional.\n\n•	El 82,3 % de docentes y directivos está satisfecho con la eficiencia de las políticas y estrategias institucionales para promover la formación en investigación.\n\n•	Se resalta el papel de los docentes como facilitadores de procesos investigativos y como modelo de vocación investigativa para los estudiantes.\n\n•	Se identifica la necesidad de más recursos financieros para el desarrollo de proyectos en los semilleros y de mayor difusión institucional sobre las oportunidades de participación." }
+            ]
           },
           {
-            nombre: "Característica 17. Investigación, desarrollo tecnológico, innovación y creación.",
-            descripcion: "Evalúa los procesos de investigación, desarrollo tecnológico e innovación institucional.",
-            imagen: "imagenes/caracteristica17.jpg"
+            nombre: "Característica 22. Investigación, desarrollo tecnológico, innovación y creación",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle ha establecido un marco normativo sólido para fomentar la investigación, el desarrollo tecnológico, la innovación y la creación. Entre los documentos clave se encuentran:\n\n•	Sistema de Investigación, Innovación y Emprendimiento Lasallista (SIEUL 2021-2026): Define políticas y estrategias para la investigación y transferencia tecnológica. \n\n•	Política de Propiedad Intelectual (Acuerdo 025 de 2021): Actualiza las normativas sobre propiedad intelectual. \n\n•	Reglamentación de valoración de producción intelectual (Acuerdo 005 de 2023): Establece indicadores reconocidos por MINCIENCIAS. \n\n•	Política de publicaciones (Resolución Rectoría 132 de 2020): Regula los procesos editoriales. \n\n•	Lineamientos para semilleros de investigación (Acuerdo 014 de 2023): Orienta la creación y funcionamiento de semilleros. \n\n•	Sistema de Información SIGIIP: Implementado en 2022 para el seguimiento de proyectos y productos científicos. " },
+              { tipo: "descripcion", texto: "<strong>Producción científica y tecnológica</strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha logrado avances significativos en investigación:\n\n•	35 grupos reconocidos en 2024, 22 en categoría A1 o A (63%).\n\n•	266 investigadores reconocidos (3 Eméritos, 8 Senior, 73 Asociados).\n\n•	311% de crecimiento en productividad científica. \n\n•	Evolución artículos en Scopus: de 50 artículos en 2018 a 130 en 2024" },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\"><strong>Producción Académica comparada</strong></p>" },
+              { tipo: "imagen", src: "imag-cont/Fac 6 graf 1.png" },
+              { tipo: "descripcion", texto: "<p style=\"text-align: center;\">Fuente: Elaboración propia con base a información de la VRIT, 2025</p>" },
+              { tipo: "descripcion", texto: "<strong>Patentes</strong>" },
+              { tipo: "descripcion", texto: "\n\n•	19 patentes registradas (2018–2024): 14 concedidas, 5 en trámite.\n\n•	Áreas: biotecnología, agroindustria, salud, ingeniería, cosmética.\n\n•	Se destaca la creación de la spin-off ANDIBIO." },
+              { tipo: "descripcion", texto: "<strong>Impacto de proyectos</strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha desarrollado proyectos con impacto social y ambiental:\n\n•	Alimentos funcionales: Generación de patentes y creación de la spin-off 'ANDIBIO'. \n\n•	Sistemas silvopastoriles: Mejoran la biodiversidad y productividad en comunidades rurales. \n\n•	Narrativas de paz: Investigación con 1200 maestros rurales de nueve territorios rurales colombianos de Caldas, Putumayo, Huila, Cauca, Sur de Bolívar, Choco, Casanare, Nariño y Cundinamarca para fortalecer la educación en contextos de conflicto. \n\n•	Material vegetal en Casanare: Producción de semillas de calidad para plátano, piña y yuca. \n\n•	Ingredientes naturales en Chocó: Desarrollo de productos cosméticos y alimenticios sostenibles" },
+              { tipo: "descripcion", texto: "<strong>Fomento e incentivos</strong>" },
+              { tipo: "descripcion", texto: "La Universidad ha implementado estrategias para apoyar la investigación:\n\n•	Becas y descuentos: 111 profesores recibieron apoyo para doctorados entre 2020-2024. \n\n•	Reconocimientos económicos: $34.8 millones otorgados por publicaciones en revistas Q1. \n\n•	Movilidad internacional: 9 profesores participaron en pasantías internacionales con una inversión de $122 millones. \n\n•	Traducción y corrección de artículos: $168.250.000\n\n•	Publicaciones en acceso abierto: $12.742.220 (APC) + $114.887.247 (acuerdos transformativos)\n\n•	Convocatorias internas (2018–2024): $2.834 millones. Se financian proyectos con montos entre $5 y $50 millones.\n\n•	Financiación externa (2018–2024): $16.367 millones" },
+              { tipo: "descripcion", texto: "<strong>Laboratorios y centros especializados</strong>" },
+              { tipo: "descripcion", texto: "La Universidad cuenta con unidades especializadas para el desarrollo de investigación de impacto:\n\n•	Laboratorio Instrumental de Alta Complejidad (LIAC): Acreditado para análisis de Cannabis y muestras ambientales. \n\n•	Centros para la Investigación y Capacitación (CIC): Ubicados en Cundinamarca y Casanare, promueven prácticas agrícolas y agropecuarias. \n\n•	Centro de Estudios e Investigaciones Rurales (CEIR): Enfocado en desarrollo territorial y políticas públicas. \n\n•	Centro de Liderazgo y Excelencia Docente (CLED): Mejora prácticas educativas en contextos rurales y urbanos. " },
+              { tipo: "descripcion", texto: "<strong>7.	Revistas científicas</strong> \n\n•	Ediciones Unisalle publica cinco revistas especializadas (educación, agropecuarias, arquitectura, salud, ciencias sociales).\n\n•	Mejora en indexación y visibilidad en bases como DOAJ, Dialnet y Redalyc. Uso de plataformas OJS y Digital Commons." },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y nivel de satisfacción de la comunidad</strong>" },
+              { tipo: "descripcion", texto: "La comunidad académica en los talleres focales menciono:\n\n•	Se valora el compromiso institucional y docente con la investigación.\n\n•	Se identifica la necesidad de diversificar los criterios de valoración para la investigación-creación según el campo disciplinar.\n\n•	Se propone mayor articulación con políticas de ciencia abierta.\n\n•	Se sugiere ajustar el modelo de carrera docente para reconocer diversos perfiles investigativos.\n\n•	Se destaca el potencial de iniciativas como el proyecto Utopía, aún poco visibilizado.\n\n•	Se recomienda gestionar alianzas estratégicas desde niveles directivos para fortalecer la proyección investigativa." }
+            ]
           }
         ]
       },
+      //FACTOR 7
       {
         nombre: "Impacto Social",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR7",
@@ -527,17 +574,44 @@
           }
         ]
       },
+      //FACTOR 8
       {
         nombre: "Visibilidad Nacional e Internacional",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR8",
         caracteristicas: [
           {
-            nombre: "Característica 20. Inserción de la institución en contextos académicos nacionales e internacionales.",
-            descripcion: "Analiza la inserción y proyección de la institución en contextos académicos nacionales e internacionales.",
-            imagen: "imagenes/caracteristica20.jpg"
+            nombre: "Característica 25. Inserción de la institución en contextos académicos nacionales e internacionales",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "A nivel de inserción de la institución en contextos nacionales e internacionales, se resalta la siguiente normatividad interna:\n\n•	Librillo 85: Lineamientos para la internacionalización del currículo, que define estrategias para integrar componentes internacionales e interculturales en los programas académicos.  \n\n•	Acuerdo 014 de 2019, que establece los procedimientos, requisitos y beneficios para facilitar la movilidad y el reconocimiento de esta experiencia en la formación de los estudiantes\n\n•	Acuerdo 015 de 2022, que reglamenta el cumplimiento del requisito de lengua extranjera. \n\n•	Reglamento del Profesorado (Acuerdo 003 de 2023) exige el dominio de una segunda lengua como requisito para ascensos en el escalafón docente. " },
+              { tipo: "descripcion", texto: "<strong>Internacionalización del Currículo </strong>" },
+              { tipo: "descripcion", texto: "Algunas de las estrategias para promover la internacionalización del currículo han sido:\n\n•	Adquisición de colecciones en una segunda lengua: Actualmente, el 68,24% de la colección (digital y física) está en español, mientras que el 30,39% en inglés\n\n•	Definición de competencias y resultados de aprendizaje con un componente multicultural o internacional\n\n•	Inclusión de inglés en el plan de estudios y la creación de espacios académicos en segunda lengua\n\n•	Creación e implementación de planes de internacionalización por unidad académica\n\n•	Entre 2020 y 2024, 45 profesores han sido capacitados en metodología Collaborative Online International Learning - COIL" },
+              { tipo: "descripcion", texto: "<strong>Participación en redes de investigación científica y la implementación de modelos de acreditación regional e internacional</strong>" },
+              { tipo: "descripcion", texto: "Destaca la obtención o el progreso en el proceso de acreditación con las siguientes agencias:\n\n•	European Accreditation Consortium (ECA): Todos los programas recibieron la certificación de calidad en el componente de internacionalización. \n\n•	Accreditation Board for Engineering and Technology, Inc. (ABET): Programa de Ingeniería Eléctrica acreditado en 2020 por 6 años.\n\n•	Royal Institute of British Architects (RIBA): Programa de Arquitectura- Renovación de la acreditación en 2024 por 4 años.\n\n•	Sistema Latinoamericano de Evaluación Universitaria (SILEU-CLACSO): Los programas de Trabajo Social, Maestría en Estudios y Gestión del Desarrollo, Doctorado en Educación y Sociedad, Maestría en Docencia han recibido esta certificación por la pertinencia curricular enfocada en el impacto y transformación de sociedades. \n\n•	Sistema Regional de Acreditación para la Educación Superior en el Mercosur y Estados Asociados (ARCU-SUR): Los programas de Economía e Ingeniería Civil acreditados en 2022 por 6 años.\n\n•	Accreditation Council for Business Schools and Programs (ACBSP) – En curso." },
+              { tipo: "descripcion", texto: "<strong>Rankings internacionales</strong> \n\n•	Entre 2018 y 2024, la Universidad de La Salle en Colombia ha mantenido una presencia destacada en los rankings QS y THE Rankings\n\n•	En THE Impact Ranking la Universidad ha contado con participaciones destacadas, en particular resaltan sus esfuerzos en la erradicación de la pobreza (ODS 1), la promoción de la salud y el bienestar (ODS 3), la lucha contra el hambre (ODS 2) y el fortalecimiento de alianzas para lograr los objetivos (ODS 17).\n\n•	En 2021, la Universidad mejoró su desempeño en QS Stars, ascendiendo a una calificación general de 4 estrellas, y pasando de la categoría “buena” a “muy buena”" },
+              { tipo: "descripcion", texto: "<strong>Movilidad académica </strong> \n\n•	Entre 2018 y 2024, se ha contado con 1.033 convenios activos, de los cuales el 42,9% corresponden a cooperación interinstitucional, mientras que el 23,3% corresponden a la modalidad de consultoría – extensión y el 11,3% corresponde a convenios de movilidad académica de profesores, investigadores o administrativos.\n\n•	En el ámbito de doble titulación, se destacan convenios con instituciones como la Universidad Católica Silva Henríquez (Chile) y Rennes School of Business (Francia), beneficiando a estudiantes de programas como Trabajo Social y Negocios y Relaciones Internacionales. \n\n•	La inversión en movilidad saliente alcanzó $1.258.684.830 entre 2018 y 2024, beneficiando a 282 estudiantes.\n\n•	En movilidad entrante, se otorgaron becas completas de matrícula a 303 estudiantes internacionales.  " },
+              { tipo: "descripcion", texto: "<strong>Competencia en Lenguas Extranjeras</strong> \n\n•	Entre 2018 y 2024, 5.007 estudiantes cumplieron el requisito de inglés, destacando un promedio de 171 puntos en Saber Pro, superior al promedio nacional (153).  \n\n•	El Centro de Lenguas ofrece formación en inglés, francés y portugués, con actividades como webinars, clubes de conversación y semanas culturales. Entre 2018 y 2024, 3.675 estudiantes cumplieron el requisito de dominio de segunda lengua a través la aprobación de los cursos ofrecidos por el Centro. \n\n•	Actualmente, 217 docentes tienen certificaciones en inglés, francés, italiano y portugués." },
+              { tipo: "descripcion", texto: "<strong>Publicaciones Científicas</strong> \n\n•	La Universidad invirtió $135.750.000 en apoyos para la publicación de 64 artículos científicos entre 2020 y 2024.  Además, se destinaron $11.408.834.938 para acceso a bases de datos, fortaleciendo la investigación y la visibilidad internacional. \n\n•	El programa 100,000 Strong in the Americas facilitó la movilidad investigativa internacional, de hecho, el 65% de las movilidades investigativas internacionales son financiadas por este fondo" },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y Nivel de Satisfacción de la Comunidad</strong>" },
+              { tipo: "descripcion", texto: "La comunidad académica valora positivamente las iniciativas de internacionalización y el apoyo financiero para movilidad.  En particular:\n\n•	Los estudiantes destacan la calidad de la formación integral y las oportunidades de intercambio, mientras que los docentes reconocen avances en el uso de lenguas extranjeras y metodologías colaborativas como COIL.  \n\n•	Se identifican áreas de mejora, como ampliar la oferta de idiomas estratégicos y fortalecer el dominio de lenguas extranjeras en el cuerpo profesoral. " }
+            ]
+          },
+          {
+            nombre: "Característica 26. Relaciones externas y estudiantes ",
+            bloques: [
+              { tipo: "descripcion", texto: "<strong>Normatividad institucional</strong>" },
+              { tipo: "descripcion", texto: "La Universidad de La Salle cuenta con normativas que regulan y promueven la movilidad académica y la internacionalización. \n\n•	Acuerdo 014 de 2019 establece los procedimientos, requisitos y beneficios para facilitar la movilidad estudiantil, incluyendo dobles titulaciones, intercambios académicos, cursos cortos, voluntariados internacionales y cotutelas. " },
+              { tipo: "descripcion", texto: "<strong>Movilidad de Profesores</strong>\n\n •	Entre 2018 y 2024, la Universidad recibió 1.173 profesores visitantes, de los cuales 806 fueron internacionales y 367 nacionales. Los principales países de origen fueron Colombia, México, Estados Unidos y España.  \n\n•	Entre 2018 y 2024, 2.479 docentes de la Universidad han actuado en calidad de profesores visitantes en otras instituciones. Las Ponencias Nacionales e Internacionales, con un total de 829 y 373 participaciones respectivamente, constituyen las modalidades de mayor participación, representando el 45.8% y el 15% del total general de las participaciones." },
+              { tipo: "descripcion", texto: "<strong>Movilidad de Estudiantes </strong>\n\n •	Entre 2018 y 2024, la Universidad recibió 747 estudiantes visitantes de 24 países y 92 instituciones.  El 88% fueron internacionales, destacando México y Francia como principales socios.  Las modalidades más comunes fueron semestres académicos de intercambio (47%) y cursos cortos (44%).  La Facultad de Economía, Empresa y Desarrollo Sostenible (FEEDS) fue la principal receptora, con 103 estudiantes.\n\n•	Entre 2018 y 2024, 1.409 estudiantes participaron en programas de movilidad, de los cuales el 73% fue en instituciones internacionales.  México lideró como destino con el 24% de las movilidades, seguido por Brasil (13%) y España (9%). Las modalidades más frecuentes fueron cursos cortos (36%) y semestres académicos de intercambio (35%).  La FEEDS fue la Facultad con mayor participación, enviando 242 estudiantes." },
+              { tipo: "descripcion", texto: "<strong>Summer y Winter Academy  </strong>\n\n •	El International La Salle Summer/Winter Academy ofreció 78 cursos entre 2018 y 2024, beneficiando a 1.289 estudiantes de la Universidad y 61 de otras instituciones. Los cursos interdisciplinarios, impartidos por profesores internacionales, promovieron competencias interculturales y comunicativas en inglés.  Además, se ofrecieron becas parciales que cubrieron el 70% del costo de los créditos homologables." },
+              { tipo: "descripcion", texto: "<strong>Alianzas estratégicas</strong>\n\n •	La participación en redes como IALU y CCYK ha permitido fomentar el trabajo colaborativo y el diseño de programas internacionales. Estas alianzas han fortalecido también los procesos de extensión universitaria, como se evidencia en proyectos de desarrollo rural con impacto regional impulsados por la Facultad de Ciencias Agropecuarias." },
+              { tipo: "descripcion", texto: "<strong>Impacto en Competencias </strong>\n\n •	La internacionalización ha fortalecido competencias comunicativas, tecnológicas, digitales y multiculturales. Estrategias como el aprendizaje en segunda lengua, la implementación en metodología colaborativas como clases espejo y COIL, manejo de aplicaciones como Google My Maps, Prezi o Canva y reconocimiento de la diversidad multicultural han contribuido a este fortalecimiento" },
+              { tipo: "descripcion", texto: "<strong>Apreciaciones y Nivel de Satisfacción de la Comunidad</strong>\n\n •	La comunidad universitaria valora positivamente las iniciativas de internacionalización, destacando el impacto en la calidad de la docencia, investigación y proyección social.  Los testimonios de estudiantes y profesores reflejan satisfacción con las oportunidades de movilidad y el acompañamiento integral brindado por la DRII. \n\n•	Se identifican áreas de mejora, como el fortalecimiento del aprendizaje de segundas lenguas entre el cuerpo docente y la ampliación de recursos para estudiantes con menos oportunidades. " }
+            ]
           }
         ]
       },
+      //FACTOR 9
       {
         nombre: "Bienestar Institucional",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR9",
@@ -549,6 +623,7 @@
           }
         ]
       },
+      //FACTOR 10
       {
         nombre: "Comunidad de Profesores",
         formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR10",
@@ -644,39 +719,82 @@
       // Agregar lista de características con desglose
       const lista = document.createElement('ul');
       
-      // Verificar si las características son objetos o strings
-      factor.caracteristicas.forEach((caracteristica, j) => {
+      // Procesar las características
+      factor.caracteristicas.forEach(caracteristica => {
         const li = document.createElement('li');
         li.className = 'caracteristica-item';
         
-        // Si la característica es un objeto, usar su propiedad nombre
+        // Si la característica es un objeto con propiedades
         if (typeof caracteristica === 'object') {
-          li.textContent = caracteristica.nombre;
+          // Crear el encabezado de la característica
+          const header = document.createElement('div');
+          header.className = 'caracteristica-header';
+          header.textContent = caracteristica.nombre;
+          li.appendChild(header);
           
-          // Crear el contenido desplegable de la característica
+          // Crear el contenedor para el contenido desplegable
           const caracteristicaContenido = document.createElement('div');
           caracteristicaContenido.className = 'caracteristica-contenido';
-          caracteristicaContenido.id = `caracteristica-${i}-${j}`;
           
-          // Agregar descripción
-          if (caracteristica.descripcion) {
-            const descripcion = document.createElement('p');
-            descripcion.textContent = caracteristica.descripcion;
-            descripcion.style.whiteSpace = 'pre-line'; // ✅ Respeta los saltos de línea
-            caracteristicaContenido.appendChild(descripcion);
-          }
-          // Agregar imagen (si existe)
-          if (caracteristica.imagen) {
-            const imagen = document.createElement('img');
-            imagen.src = caracteristica.imagen;
-            imagen.alt = `Imagen de ${caracteristica.nombre}`;
-            imagen.className = 'caracteristica-imagen';
-            // Agregar estas líneas para centrar:
-            imagen.style.display = 'block';
-            imagen.style.margin = '0 auto';
-            imagen.style.maxWidth = '100%';
-            imagen.style.height = 'auto';
-            caracteristicaContenido.appendChild(imagen);
+          // Procesar bloques en orden
+          if (Array.isArray(caracteristica.bloques)) {
+            caracteristica.bloques.forEach(bloque => {
+              if (bloque.tipo === "descripcion") {
+                const p = document.createElement('p');
+                // Transformar el texto para convertir listas en HTML con indentación
+                const textoFormateado = bloque.texto.replace(/\n\n•\s*([^\n]+)/g, function(match, contenido) {
+                  return '\n\n<div style="padding-left: 20px;">•&nbsp;' + contenido + '</div>';
+                });
+                p.innerHTML = textoFormateado;
+                p.style.whiteSpace = 'pre-line';
+                caracteristicaContenido.appendChild(p);
+              }
+
+              if (bloque.tipo === "imagen") {
+                const img = document.createElement('img');
+                img.src = bloque.src;
+                img.alt = bloque.alt || 'Imagen descriptiva';
+                img.className = 'caracteristica-imagen';
+                img.style.display = 'block';
+                img.style.margin = '20px auto';
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                caracteristicaContenido.appendChild(img);
+              }
+
+              if (bloque.tipo === "tabla") {
+                if (bloque.datos.titulo) {
+                  const titulo = document.createElement('h4');
+                  titulo.textContent = bloque.datos.titulo;
+                  titulo.style.marginTop = '30px';
+                  titulo.style.marginBottom = '15px';
+                  titulo.style.textAlign = 'center';
+                  titulo.style.color = '#333';
+                  caracteristicaContenido.appendChild(titulo);
+                }
+                const tabla = crearTablaHTML(bloque.datos);
+                caracteristicaContenido.appendChild(tabla);
+              }
+            });
+          } else if (caracteristica.descripcion) {
+            // Si no hay bloques pero hay descripción, mostrar la descripción
+            const p = document.createElement('p');
+            p.textContent = caracteristica.descripcion;
+            p.style.whiteSpace = 'pre-line';
+            caracteristicaContenido.appendChild(p);
+            
+            // Si hay imagen, mostrarla
+            if (caracteristica.imagen) {
+              const img = document.createElement('img');
+              img.src = caracteristica.imagen;
+              img.alt = 'Imagen descriptiva';
+              img.className = 'caracteristica-imagen';
+              img.style.display = 'block';
+              img.style.margin = '20px auto';
+              img.style.maxWidth = '100%';
+              img.style.height = 'auto';
+              caracteristicaContenido.appendChild(img);
+            }
           }
           
           // Agregar el contenido desplegable al elemento de lista
@@ -688,6 +806,18 @@
             if (e.target.closest('.caracteristica-contenido')) {
               return;
             }
+
+            // Cerrar todas las demás características
+            const todasLasCaracteristicas = document.querySelectorAll('.caracteristica-item');
+            todasLasCaracteristicas.forEach(item => {
+              if (item !== this) {
+                item.classList.remove('abierto');
+                const contenido = item.querySelector('.caracteristica-contenido');
+                if (contenido) {
+                  contenido.classList.remove('activo');
+                }
+              }
+            });
             
             // Alternar la clase 'abierto' para el elemento de lista
             this.classList.toggle('abierto');

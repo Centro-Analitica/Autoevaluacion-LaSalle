@@ -1,11 +1,19 @@
-body { 
+/* Estilos generales */
+    body { 
       font-family: Arial, sans-serif; 
       padding: 20px; 
       text-align: center; 
       margin: 0;
     }
     
-    /* Franja azul con título */
+    h1 {
+      margin: 0 auto;
+      font-size: 3rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Encabezados */
     header {
       background-color: #003057;
       color: white;
@@ -36,28 +44,21 @@ body {
     }
 
     .home-icon {
-      font-size: 24px;
+      font-size: 30px;
     }
 
-    h1 {
-      margin: 0 auto;
-      font-size: 2rem;
-      width: 100%;
-      text-align: center;
-    }
-
-     /* Encabezado superior */
+    /* Encabezado superior */
     .top-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background-color: #ffffff;
-      padding: 10px 30px;
+      padding: 20px 30px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .top-header .logo {
-      height: 50px;
+      height: 70px;
     }
 
     #searchForm {
@@ -72,22 +73,24 @@ body {
       padding: 8px 15px;
       border-radius: 20px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
 
     .top-header .icons {
       display: flex;
       gap: 15px;
-      font-size: 20px;
+      font-size: 22px;
       color: #003057;
       cursor: pointer;
     }
     
+    /* Resaltado para búsqueda */
     .resaltado {
       background-color: #F2A900;
       transition: background-color 0.5s;
     }
 
-    /* Botones */ 
+    /* Botones y contenido desplegable */ 
     .button {
       display: block;
       padding: 15px;
@@ -102,7 +105,7 @@ body {
       position: relative;
       cursor: pointer;
       border: none;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
     }
     
@@ -125,7 +128,6 @@ body {
       transform: rotate(180deg);
     }
 
-    /* Estilos para el contenido desplegable */
     .logro-contenido {
       display: none;
       background-color: #f5f5f5;
@@ -162,6 +164,7 @@ body {
       to { opacity: 1; }
     }
 
+    /* Pie de página */
     .footer {
       background-color: #003057;
       color: white;
@@ -173,11 +176,11 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+      flex-wrap: wrap;
     }
 
     .left, .right {
-      font-size: 14px;
+      font-size: 18px;
     }
     
     /* Estilos responsivos */
@@ -186,10 +189,6 @@ body {
         width: 90%;
         padding: 12px;
         font-size: 16px;
-      }
-      
-      .top-header {
-        padding: 10px 15px;
       }
       
       .top-header .logo {

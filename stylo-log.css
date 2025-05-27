@@ -128,7 +128,8 @@
       transform: rotate(180deg);
     }
 
-    .logro-contenido {
+    /* Estilo para el contenido del eje */
+    .eje-contenido {
       display: none;
       background-color: #f5f5f5;
       border-radius: 8px;
@@ -140,18 +141,70 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
-    .logro-contenido h3 {
+    .eje-contenido.activo {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    
+    .eje-contenido h3 {
       color: #003057;
       margin-top: 0;
     }
     
-    .logro-contenido ul {
+    .eje-contenido ul {
       padding-left: 20px;
     }
     
-    .logro-contenido li {
+    .eje-contenido li {
       margin-bottom: 10px;
       line-height: 1.5;
+    }
+    
+    /* Estilo para los elementos de logro */
+    .logro-item {
+      margin-bottom: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    
+    .logro-header {
+      padding: 10px 15px;
+      background-color: #f0f0f0;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .logro-item:hover .logro-header {
+      background-color: #e0e0e0;
+    }
+    
+    .logro-item.abierto .logro-header {
+      background-color: #003057;
+      color: white;
+      border-radius: 5px 5px 0 0;
+    }
+    
+    /* Estilo para el contenido de cada logro */
+    .logro-contenido {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background-color: #f9f9f9;
+      padding: 0 15px;
+      border-radius: 0 0 5px 5px;
+      border: 1px solid #e0e0e0;
+      border-top: none;
+      cursor: default; 
+    }
+    
+    .logro-contenido.activo {
+      max-height: 2000px; /* Valor alto para permitir contenido extenso */
+      padding: 15px;
+      transition: max-height 0.5s ease, padding 0.3s ease;
     }
     
     .activo {
@@ -244,4 +297,20 @@
       .top-header .icons {
         margin-top: 5px;
       }
+    }
+    .logro-contenido {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background-color: #f9f9f9;
+      padding: 0 15px;
+      border-radius: 0 0 5px 5px;
+      border: 1px solid #e0e0e0;
+      border-top: none;
+    }
+    
+    .logro-contenido.activo {
+      max-height: 2000px; /* Valor alto para permitir contenido extenso */
+      padding: 15px;
+      transition: max-height 0.5s ease, padding 0.3s ease;
     }

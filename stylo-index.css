@@ -299,11 +299,6 @@ h1 {
         margin-bottom: 5px;
       }
       
-      #searchForm {
-        width: 100%;
-        margin: 5px 0;
-      }
-      
       .top-header .search-box {
         width: 90%;
       }
@@ -311,14 +306,15 @@ h1 {
       .top-header .icons {
         margin-top: 5px;
       }
-      #searchForm {
+    #searchForm {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
+    width: 100%;
+    margin: 5px 0;
   }
 
-  #searchForm input,
   #searchForm button {
-    width: 100%;
+    margin-left: 0; /* Elimina el margen izquierdo que desalineaba los botones */
   }
 }

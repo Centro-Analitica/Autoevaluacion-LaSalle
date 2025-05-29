@@ -320,12 +320,7 @@
         height: 35px;
         margin-bottom: 5px;
       }
-      
-      #searchForm {
-        width: 100%;
-        margin: 5px 0;
-      }
-      
+    
       .top-header .search-box {
         width: 90%;
       }
@@ -337,11 +332,20 @@
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
+    width: 100%;
+    margin: 5px 0;
   }
 
-  #searchForm input,
+  #searchForm input {
+    width: 100%;
+    max-width: 300px; /* Evita que se alargue demasiado */
+    margin: 0 auto;   /* Centra el input */
+  }
+
   #searchForm button {
     width: 100%;
+    max-width: 300px; /* Opcional: iguala ancho con input */
+    margin: 0 auto;
   }
     }
     .logro-contenido {

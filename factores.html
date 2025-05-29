@@ -22,6 +22,8 @@
     <img src="imagenes/Logosimbolo_color.png" alt="Logo La Salle" class="logo">
     <form id="searchForm" onsubmit="buscarContenido(event)">
       <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
+      <button type="submit">Buscar</button>
+      <button type="button" onclick="borrarBusqueda()">Borrar búsqueda</button>
     </form>
     <div class="top-header">
       <img src="imagenes/Auto_la_salle__2.0_-removebg-preview.png" alt="Autoevaluación" class="logo">
@@ -1256,73 +1258,117 @@
     
     // Función de búsqueda mejorada para incluir características
     function buscarContenido(event) {
-      event.preventDefault(); // Evita que el formulario se envíe
-      
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      if (!searchTerm) return; // No buscar si está vacío
-      
-      // Elementos donde buscaremos
-      const elementos = document.querySelectorAll('h1, h2, h3, p, li, .button, .caracteristica-item');
-      
-      // Limpiar resaltados anteriores
-      document.querySelectorAll('.resaltado').forEach(el => {
-        el.classList.remove('resaltado');
-        el.style.backgroundColor = '';
-      });
-      
-      // Buscar en los elementos
-      let primerElementoEncontrado = null;
-      
-      elementos.forEach(elemento => {
-        if (elemento.innerText.toLowerCase().includes(searchTerm)) {
-          // Resaltar temporalmente
-          elemento.style.backgroundColor = '#F2A900';
-          elemento.style.transition = 'background-color 0.5s';
-          elemento.classList.add('resaltado');
-          
-          // Si el elemento está dentro de un contenido desplegable, abrirlo
-          const factorContenidoPadre = elemento.closest('.factor-contenido');
-          if (factorContenidoPadre && !factorContenidoPadre.classList.contains('activo')) {
-            const index = factorContenidoPadre.id.split('-')[1];
-            const boton = document.querySelector(`.button[data-index="${index}"]`);
-            if (boton) {
-              // Abrir el factor
-              boton.classList.add('abierto');
-              factorContenidoPadre.classList.add('activo');
-            }
-          }
-          
-          // Si el elemento es una característica, abrir su contenido
-          if (elemento.classList.contains('caracteristica-item')) {
-            elemento.classList.add('abierto');
-            const caracteristicaContenido = elemento.querySelector('.caracteristica-contenido');
-            if (caracteristicaContenido) {
-              caracteristicaContenido.classList.add('activo');
-            }
-          }
-          
-          // Guardar referencia al primer elemento encontrado
-          if (!primerElementoEncontrado) {
-            primerElementoEncontrado = elemento;
-          }
+  event.preventDefault(); // Evita que el formulario se envíe
+
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  if (!searchTerm) return;
+
+  // Limpiar resaltados anteriores
+  document.querySelectorAll('.resaltado').forEach(el => {
+    el.innerHTML = el.textContent;
+    el.classList.remove('resaltado');
+  });
+
+  let primerElementoEncontrado = null;
+
+  // Buscar en elementos específicos
+  const elementos = document.querySelectorAll('h1, h2, h3, p, li, .button, .caracteristica-item');
+
+  elementos.forEach(elemento => {
+    const textoOriginal = elemento.textContent;
+    const textoLower = textoOriginal.toLowerCase();
+
+    if (textoLower.includes(searchTerm)) {
+      // Resaltar solo la palabra buscada con <mark>
+      const resaltadoHTML = textoOriginal.replace(
+        new RegExp(`(${searchTerm})`, 'gi'),
+        '<mark>$1</mark>'
+      );
+      elemento.innerHTML = resaltadoHTML;
+      elemento.classList.add('resaltado');
+
+      // Si el elemento está dentro de un contenido desplegable, abrirlo
+      const factorContenidoPadre = elemento.closest('.factor-contenido');
+      if (factorContenidoPadre && !factorContenidoPadre.classList.contains('activo')) {
+        const index = factorContenidoPadre.id.split('-')[1];
+        const boton = document.querySelector(`.button[data-index="${index}"]`);
+        if (boton) {
+          boton.classList.add('abierto');
+          factorContenidoPadre.classList.add('activo');
         }
-      });
-      
-      // Hacer scroll al primer elemento encontrado
-      if (primerElementoEncontrado) {
-        primerElementoEncontrado.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'center'
-        });
-        
-        // Volver al color original después de 3 segundos
-        setTimeout(() => {
-          document.querySelectorAll('.resaltado').forEach(el => {
-            el.style.backgroundColor = '';
-          });
-        }, 3000);
+      }
+
+      // Si el elemento es una característica, abrir su contenido
+      if (elemento.classList.contains('caracteristica-item')) {
+        elemento.classList.add('abierto');
+        const caracteristicaContenido = elemento.querySelector('.caracteristica-contenido');
+        if (caracteristicaContenido) {
+          caracteristicaContenido.classList.add('activo');
+        }
+      }
+
+      // Guardar el primer match
+      if (!primerElementoEncontrado) {
+        primerElementoEncontrado = elemento;
       }
     }
+  });
+
+  // Hacer scroll al primer resultado
+  if (primerElementoEncontrado) {
+    primerElementoEncontrado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Remover resaltado después de 10 segundos
+    setTimeout(() => {
+      document.querySelectorAll('mark').forEach(el => {
+        const parent = el.parentNode;
+        parent.replaceChild(document.createTextNode(el.textContent), el);
+        parent.normalize();
+      });
+    }, 10000);
+  }
+}
+// Borrar busqueda
+function borrarBusqueda() {
+  // Limpiar input
+  const input = document.getElementById('searchInput');
+  input.value = '';
+
+  // Quitar resaltados
+  document.querySelectorAll('.resaltado').forEach(el => {
+    el.innerHTML = el.textContent;
+    el.classList.remove('resaltado');
+  });
+
+  // Quitar <mark> manualmente si hay alguno
+  document.querySelectorAll('mark').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
+
+  // Cerrar factores activos
+  document.querySelectorAll('.factor-contenido.activo').forEach(el => {
+    el.classList.remove('activo');
+  });
+
+  // Cerrar botones abiertos (si los estás usando)
+  document.querySelectorAll('.button.abierto').forEach(el => {
+    el.classList.remove('abierto');
+  });
+
+  // Cerrar características abiertas (si aplican)
+  document.querySelectorAll('.caracteristica-item.abierto').forEach(el => {
+    el.classList.remove('abierto');
+  });
+  document.querySelectorAll('.caracteristica-contenido.activo').forEach(el => {
+    el.classList.remove('activo');
+  });
+
+  // Opcional: volver el foco al input
+  input.focus();
+}
+
   </script>
   <footer class="footer">
   <div class="footer-content">

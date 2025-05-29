@@ -70,11 +70,34 @@
     }
 
     #searchForm {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      margin: 0 20px;
-    }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+#searchInput {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+#searchForm button {
+  background-color: #003057;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#searchForm button:hover {
+  background-color: #0056a6;
+}
 
     .top-header .search-box {
       width: 60%;
@@ -255,7 +278,7 @@
     }
 
     .left, .right {
-      font-size: 18px;
+      font-size: 14px;
     }
     
     /* Estilos responsivos */
@@ -290,7 +313,7 @@
       }
       
       .left, .right {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
 
@@ -339,6 +362,16 @@
       .top-header .icons {
         margin-top: 5px;
       }
+      #searchForm {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  #searchForm input,
+  #searchForm button {
+    width: 100%;
+  }
     }
     /* Agregar en la sección de estilos */
 .caracteristica-descripcion {

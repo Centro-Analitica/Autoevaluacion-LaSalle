@@ -9,12 +9,12 @@
     <link rel="icon" type="image/jpg" href="imagenes/Logo-Universidad-de-La-Salle.jpg">
 <body>
 <header>
-    <div class="header-content">
-        <a href="index.html" class="home-link" title="Volver a inicio">
-            <span class="home-icon">🏢</span>
-        </a>
-        <h1>Horizontes y Criterios</h1>
-    </div>
+  <div class="header-content">
+    <a href="index.html" class="home-link" title="Volver a inicio">
+      <span class="home-icon">🏢</span>
+    </a>
+    <h1>Horizontes y Criterios</h1>
+  </div>
 </header>
 
 <!-- Encabezado superior -->
@@ -22,6 +22,8 @@
     <img src="imagenes/Logosimbolo_color.png" alt="Logo La Salle" class="logo">
     <form id="searchForm" onsubmit="buscarContenido(event)">
         <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
+        <button type="submit">Buscar</button>
+        <button type="button" onclick="borrarBusqueda()">Borrar búsqueda</button>
     </form>
     <div class="top-header">
         <img src="imagenes/Auto la salle (2.0).png" alt="Autoevaluación" class="logo">
@@ -631,6 +633,30 @@ function buscarContenido(event) {
         });
     }, 10000);
 }
+
+function borrarBusqueda() {
+    // Limpiar el input
+    document.getElementById('searchInput').value = '';
+
+    // Quitar resaltado
+    document.querySelectorAll('.resaltado').forEach(el => {
+        el.innerHTML = el.textContent;
+        el.classList.remove('resaltado');
+    });
+
+    // Quitar <mark> (por si quedan sueltos)
+    document.querySelectorAll('mark').forEach(el => {
+        const parent = el.parentNode;
+        parent.replaceChild(document.createTextNode(el.textContent), el);
+        parent.normalize();
+    });
+
+    // Cerrar todos los factores
+    document.querySelectorAll('.factor-card.expanded').forEach(card => {
+        card.classList.remove('expanded');
+    });
+}
+
 </script>
 
 </body>

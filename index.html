@@ -19,6 +19,8 @@
     <img src="imagenes/Logosimbolo_color.png" alt="Logo La Salle" class="logo">
     <form id="searchForm" onsubmit="buscarContenido(event)">
       <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
+      <button type="submit">Buscar</button>
+      <button type="button" onclick="borrarBusqueda()">Borrar búsqueda</button>
     </form>
     <div class="top-header">
       <img src="imagenes/Auto_la_salle__2.0_-removebg-preview.png" alt="Autoevaluación" class="logo">
@@ -129,6 +131,20 @@
       }, 3000);
     }
   }
+
+  function borrarBusqueda() {
+  const input = document.getElementById('searchInput');
+  input.value = '';
+
+  // Quitar resaltados
+  document.querySelectorAll('.resaltado').forEach(el => {
+    el.classList.remove('resaltado');
+    el.style.backgroundColor = '';
+  });
+
+  input.focus();
+}
+
 </script>
 
 <footer class="footer">

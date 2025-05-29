@@ -45,6 +45,7 @@
             position: relative;
         }
 
+
         .home-link {
             color: white;
             text-decoration: none;
@@ -79,11 +80,38 @@
         }
 
         #searchForm {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            margin: 0 20px;
-        }
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre input y botones */
+  
+  justify-content: center;
+}
+/* Input del buscador */
+#searchInput {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+        /* Estilos para botones de búsqueda */
+#searchForm button {
+  background-color: #003057;      /* Color azul institucional */
+  color: white;                   /* Letras blancas */
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;              /* Espacio entre botones */
+  border-radius: 6px;             /* Bordes redondeados */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#searchForm button:hover {
+  background-color: #0056a6;      /* Azul más claro al pasar el mouse */
+}
+
 
         .top-header .search-box {
             width: 60%;
@@ -254,9 +282,11 @@
         /* Estilos responsivos */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
-            }
-            
+            font-size: 2rem;
+        }
+        .home-icon {
+            font-size: 24px;
+        }           
             .main-content {
                 padding: 0 15px;
                 margin: 20px auto;
@@ -303,8 +333,21 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
             h1 {
                 font-size: 1.5rem;
+            }
+
+            .home-icon {
+                font-size: 22px;
             }
             
             .main-content {
@@ -347,4 +390,14 @@
             .top-header .search-box {
                 width: 90%;
             }
+            #searchForm {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  #searchForm input,
+  #searchForm button {
+    width: 100%;
+  }
         }

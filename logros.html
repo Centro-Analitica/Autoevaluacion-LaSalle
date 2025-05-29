@@ -22,6 +22,8 @@
     <img src="imagenes/Logosimbolo_color.png" alt="Logo La Salle" class="logo">
     <form id="searchForm" onsubmit="buscarContenido(event)">
       <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
+      <button type="submit">Buscar</button>
+      <button type="button" onclick="borrarBusqueda()">Borrar búsqueda</button>
     </form>
     <div class="top-header">
       <img src="imagenes/Auto_la_salle__2.0_-removebg-preview.png" alt="Autoevaluación" class="logo">
@@ -840,88 +842,98 @@
     
     // Función de búsqueda
     function buscarContenido(event) {
-      event.preventDefault(); // Evita que el formulario se envíe
-      
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      if (!searchTerm) return; // No buscar si está vacío
-      
-      // Elementos donde buscaremos (puedes agregar más)
-      const elementos = document.querySelectorAll('h1, h2, h3, p, li, .button');
-      
-      // Limpiar resaltados anteriores
-      document.querySelectorAll('.resaltado').forEach(el => {
-        el.classList.remove('resaltado');
-        el.style.backgroundColor = '';
-      });
-      
-      // Buscar en los elementos
-      let primerElementoEncontrado = null;
-      
-      elementos.forEach(elemento => {
-        if (elemento.innerText.toLowerCase().includes(searchTerm)) {
-          // Resaltar temporalmente
-          elemento.style.backgroundColor = '#F2A900';
-          elemento.style.transition = 'background-color 0.5s';
-          elemento.classList.add('resaltado');
-          
-          // Si el elemento está dentro de un contenido desplegable, abrirlo
-          const ejeContenido = elemento.closest('.eje-contenido');
-          if (ejeContenido && !ejeContenido.classList.contains('activo')) {
-            const index = ejeContenido.id.split('-')[1];
-            const boton = document.querySelector(`.button[data-index="${index}"]`);
-            if (boton) {
-              // Cerrar todos los demás
-              document.querySelectorAll('.eje-contenido').forEach(el => {
-                if (el.id !== ejeContenido.id) {
-                  el.classList.remove('activo');
-                }
-              });
-              
-              // Quitar clase 'abierto' de todos los botones
-              document.querySelectorAll('.button').forEach(btn => {
-                if (btn !== boton) {
-                  btn.classList.remove('abierto');
-                }
-              });
-              
-              // Abrir el actual
-              boton.classList.add('abierto');
-              ejeContenido.classList.add('activo');
-            }
-          }
-          
-          // Si el elemento está dentro de un logro, abrir ese logro
-          const logroItem = elemento.closest('.logro-item');
-          if (logroItem && !logroItem.classList.contains('abierto')) {
-            logroItem.classList.add('abierto');
-            const logroContenido = logroItem.querySelector('.logro-contenido');
-            if (logroContenido) {
-              logroContenido.classList.add('activo');
-            }
-          }
-          
-          // Guardar referencia al primer elemento encontrado
-          if (!primerElementoEncontrado) {
-            primerElementoEncontrado = elemento;
-          }
+  event.preventDefault();
+
+  const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+  if (!searchTerm) return;
+
+  // Quitar resaltados anteriores
+  document.querySelectorAll('.resaltado').forEach(el => {
+    el.innerHTML = el.textContent;
+    el.classList.remove('resaltado');
+  });
+
+  let primerElementoEncontrado = null;
+
+  const elementos = document.querySelectorAll('h1, h2, h3, p, li, .button');
+
+  elementos.forEach(elemento => {
+    const textoOriginal = elemento.textContent;
+    const textoLower = textoOriginal.toLowerCase();
+
+    if (textoLower.includes(searchTerm)) {
+      // Resaltar solo la palabra buscada
+      const resaltadoHTML = textoOriginal.replace(
+        new RegExp(`(${searchTerm})`, 'gi'),
+        '<mark>$1</mark>'
+      );
+      elemento.innerHTML = resaltadoHTML;
+      elemento.classList.add('resaltado');
+
+      // Abrir eje si aplica (sin cerrar los demás)
+      const ejeContenido = elemento.closest('.eje-contenido');
+      if (ejeContenido && !ejeContenido.classList.contains('activo')) {
+        ejeContenido.classList.add('activo');
+        const index = ejeContenido.id.split('-')[1];
+        const boton = document.querySelector(`.button[data-index="${index}"]`);
+        if (boton) {
+          boton.classList.add('abierto');
         }
-      });
-      
-      // Hacer scroll al primer elemento encontrado
-      if (primerElementoEncontrado) {
-        primerElementoEncontrado.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'center'
-        });
-        
-        // Volver al color original después de 3 segundos
-        setTimeout(() => {
-          document.querySelectorAll('.resaltado').forEach(el => {
-            el.style.backgroundColor = '';
-          });
-        }, 3000);
       }
+
+      // Abrir logro si aplica
+      const logroItem = elemento.closest('.logro-item');
+      if (logroItem && !logroItem.classList.contains('abierto')) {
+        logroItem.classList.add('abierto');
+        const logroContenido = logroItem.querySelector('.logro-contenido');
+        if (logroContenido) {
+          logroContenido.classList.add('activo');
+        }
+      }
+
+      if (!primerElementoEncontrado) primerElementoEncontrado = elemento;
     }
+  });
+
+  if (primerElementoEncontrado) {
+    primerElementoEncontrado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Limpiar resaltado después de 10 segundos
+    setTimeout(() => {
+      document.querySelectorAll('mark').forEach(el => {
+        const parent = el.parentNode;
+        parent.replaceChild(document.createTextNode(el.textContent), el);
+        parent.normalize();
+      });
+    }, 10000);
+  }
+}
+
+function borrarBusqueda() {
+  const input = document.getElementById('searchInput');
+  input.value = '';
+
+  // Quitar resaltado
+  document.querySelectorAll('.resaltado').forEach(el => {
+    el.innerHTML = el.textContent;
+    el.classList.remove('resaltado');
+  });
+
+  document.querySelectorAll('mark').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
+
+  // Cerrar todos los ejes y logros
+  document.querySelectorAll('.eje-contenido.activo').forEach(el => el.classList.remove('activo'));
+  document.querySelectorAll('.button.abierto').forEach(btn => btn.classList.remove('abierto'));
+  document.querySelectorAll('.logro-item.abierto').forEach(el => el.classList.remove('abierto'));
+  document.querySelectorAll('.logro-contenido.activo').forEach(el => el.classList.remove('activo'));
+
+  input.focus();
+}
+
   </script>
   <footer class="footer">
     <div class="footer-content">

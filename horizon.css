@@ -1,0 +1,350 @@
+/* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            margin: 0 auto;
+            font-size: 3rem;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        h2 { 
+            color: #003366; 
+        }
+        
+        /* Encabezados */
+        header {
+            background-color: #003057;
+            color: white;
+            padding: 30px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-bottom: 4px solid #f1c40f;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            max-width: 1500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            position: absolute;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .home-link:hover {
+            transform: scale(1.2);
+        }
+
+        .home-icon {
+            font-size: 30px;
+        }
+        
+        /* Encabezado superior */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 20px 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .top-header .logo {
+            height: 70px;
+        }
+
+        #searchForm {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            margin: 0 20px;
+        }
+
+        .top-header .search-box {
+            width: 60%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .factors-container {
+            display: grid;
+            gap: 25px;
+        }
+
+        .factor-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #003057;
+        }
+
+        .factor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .factor-header {
+            background: linear-gradient(135deg, #003057 0%, #004080 100%);
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .factor-header:hover {
+            background: linear-gradient(135deg, #004080 0%, #0056b3 100%);
+        }
+
+        .factor-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .factor-number {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .factor-card.expanded .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .factor-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .factor-card.expanded .factor-content {
+            padding: 20px;
+            max-height: 2000px;
+        }
+
+        .factor-description {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .characteristics-section {
+            margin-top: 15px;
+        }
+
+        .characteristics-title {
+            color: #003057;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f1c40f;
+        }
+
+        .characteristic-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-left: 3px solid #f1c40f;
+            transition: background 0.3s ease;
+        }
+
+        .characteristic-item:hover {
+            background: #e9ecef;
+        }
+
+        .characteristic-name {
+            font-weight: 600;
+            color: #003057;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .characteristic-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #003057;
+            color: white;
+            padding: 15px 30px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .left, .right {
+            font-size: 14px;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+            
+            .factor-header {
+                padding: 15px;
+            }
+            
+            .factor-title {
+                font-size: 1.1rem;
+            }
+            
+            .factor-number {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+            
+            .factor-card.expanded .factor-content {
+                padding: 15px;
+            }
+            
+            .top-header {
+                padding: 10px 15px;
+            }
+            
+            .top-header .logo {
+                height: 40px;
+            }
+            
+            .top-header .search-box {
+                width: 70%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .left, .right {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .main-content {
+                padding: 0 10px;
+                margin: 15px auto;
+            }
+            
+            .factor-header {
+                padding: 12px;
+            }
+            
+            .factor-title {
+                font-size: 1rem;
+            }
+            
+            .factor-card.expanded .factor-content {
+                padding: 12px;
+            }
+            
+            .characteristic-item {
+                padding: 12px;
+            }
+            
+            .top-header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .top-header .logo {
+                height: 35px;
+                margin-bottom: 5px;
+            }
+            
+            #searchForm {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .top-header .search-box {
+                width: 90%;
+            }
+        }
